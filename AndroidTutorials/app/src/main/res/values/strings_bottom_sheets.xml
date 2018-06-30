@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="BottomJava">
+    public class MainActivity extends AppCompatActivity {\n
+    Button btnBottomSheet;\n
+    LinearLayout layoutBottomSheet;\n
+    BottomSheetBehavior sheetBehavior;\n
+    Button btndialog;\n
+\n
+\n
+    @Override\n
+    protected void onCreate(Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        btnBottomSheet = findViewById(R.id.btn_bottom_sheet);\n
+        layoutBottomSheet = findViewById(R.id.bottom_sheet);\n
+        btndialog=findViewById(R.id.btn_bottom_sheet_dialog);\n
+        Toolbar toolbar = findViewById(R.id.toolbar);\n
+        toolbar.setTitle(\"Bottom Sheets\");\n
+        sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);\n
+        btnBottomSheet.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+\n
+                if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {\n
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);\n
+                    btnBottomSheet.setText(\"Close sheet\");\n
+                } else {\n
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);\n
+                    btnBottomSheet.setText(\"Expand sheet\");\n
+                }\n
+            }\n
+\n
+        });\n
+        btndialog.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                View view = getLayoutInflater().inflate(R.layout.fragment_bottom_sheet_dialog, null);\n
+\n
+                BottomSheetDialog dialog = new BottomSheetDialog(SheetsActivity.this);\n
+                dialog.setContentView(view);\n
+                dialog.show();\n
+                \n
+\n
+            }\n
+        });\n
+\n
+\n
+        /**\n
+         * bottom sheet state change listener\n
+         * we are changing button text when sheet changed state\n
+         * */\n
+        sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {\n
+            @Override\n
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {\n
+                switch (newState) {\n
+                    case BottomSheetBehavior.STATE_HIDDEN:\n
+                        break;\n
+                    case BottomSheetBehavior.STATE_EXPANDED: {\n
+                        btnBottomSheet.setText(\"Close Sheet\");\n
+                    }\n
+                    break;\n
+                    case BottomSheetBehavior.STATE_COLLAPSED: {\n
+                        btnBottomSheet.setText(\"Expand Sheet\");\n
+                    }\n
+                    break;\n
+                    case BottomSheetBehavior.STATE_DRAGGING:\n
+                        break;\n
+                    case BottomSheetBehavior.STATE_SETTLING:\n
+                        break;\n
+                }\n
+            }\n
+\n
+            @Override\n
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {\n
+\n
+            }\n
+        });\n
+    }\n
+\n
+}\n
+\n
+</string>
+    <string name="bottomlayout">
+        <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    android:id=\"@+id/bottom_sheet\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"wrap_content\"\n
+    android:background=\"#fff\"\n
+    android:orientation=\"vertical\"\n
+    android:padding=\"20dp\"\n
+    app:behavior_hideable=\"true\"\n
+    app:behavior_peekHeight=\"56dp\"\n
+    app:layout_behavior=\"android.support.design.widget.BottomSheetBehavior\">\n
+\n
+    <LinearLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:orientation=\"horizontal\"\n
+        android:layout_gravity=\"center_vertical\"\n
+        android:weightSum=\"3\">\n
+\n
+        <TextView\n
+            android:layout_width=\"0dp\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_marginBottom=\"20dp\"\n
+            android:layout_weight=\"2\"\n
+            android:text=\"@string/order_details\"\n
+            android:textColor=\"#444\"\n
+            android:textSize=\"18sp\"\n
+            android:textStyle=\"bold\" />\n
+\n
+        <TextView\n
+            android:layout_width=\"0dp\"\n
+            android:gravity=\"end\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_weight=\"1\"\n
+            android:textStyle=\"bold\"\n
+            android:textSize=\"15sp\"\n
+            android:text=\"₹435.00\" />\n
+    </LinearLayout>\n
+    \n
+    \n
+    <TextView\n
+    android:layout_width=\"wrap_content\"\n
+    android:layout_height=\"wrap_content\"\n
+    android:text=\"@string/chicken_fried_rice_1x1\" />\n
+    \n
+    <TextView\n
+    android:layout_width=\"wrap_content\"\n
+    android:layout_height=\"wrap_content\"\n
+    android:text=\"@string/paneer_tikka_1x2\" />\n
+    \n
+    <TextView\n
+    android:layout_width=\"wrap_content\"\n
+    android:layout_height=\"wrap_content\"\n
+    android:layout_marginTop=\"20dp\"\n
+    android:text=\"@string/delivery_address\"\n
+    android:textColor=\"#444\"\n
+    android:textStyle=\"bold\" />\n
+    \n
+    <TextView\n
+    android:layout_width=\"wrap_content\"\n
+    android:layout_height=\"wrap_content\"\n
+    android:text=\"@string/flat_no_404_skyline_apartments_vizag_500576\" />\n
+    \n
+    <Button\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"wrap_content\"\n
+    android:layout_marginTop=\"30dp\"\n
+    android:background=\"#000\"\n
+    android:foreground=\"?attr/selectableItemBackground\"\n
+    android:text=\"@string/proceed_payment\"\n
+    android:textColor=\"@color/textColor\" />\n
+    \n
+</LinearLayout>\n
+]]>
+    </string>
+    <string name="fragmentbtmsheet">
+        <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\"\n
+    android:paddingBottom=\"8dp\"\n
+    >\n
+\n
+\n
+\n
+    <LinearLayout\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:clickable=\"true\"\n
+        android:foreground=\"?attr/selectableItemBackground\"\n
+        android:orientation=\"horizontal\"\n
+        android:paddingBottom=\"8dp\"\n
+        android:paddingLeft=\"@dimen/activity_margin\"\n
+        android:paddingRight=\"@dimen/activity_margin\"\n
+        android:paddingTop=\"8dp\">\n
+\n
+        <ImageView\n
+            android:layout_width=\"24dp\"\n
+            android:layout_height=\"24dp\"\n
+            android:layout_marginRight=\"32dp\"\n
+            android:src=\"@drawable/app_icon\"\n
+            android:layout_marginEnd=\"32dp\" />\n
+\n
+        <TextView\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_gravity=\"center_vertical\"\n
+            android:text=\"Preview\"\n
+            android:textColor=\"#737373\"\n
+            android:textSize=\"16sp\" />\n
+\n
+    </LinearLayout>\n
+\n
+    <LinearLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:clickable=\"true\"\n
+        android:foreground=\"?attr/selectableItemBackground\"\n
+        android:orientation=\"horizontal\"\n
+        android:paddingBottom=\"8dp\"\n
+        android:paddingLeft=\"@dimen/activity_margin\"\n
+        android:paddingRight=\"@dimen/activity_margin\"\n
+        android:paddingTop=\"8dp\">\n
+\n
+        <ImageView\n
+            android:layout_width=\"24dp\"\n
+            android:layout_height=\"24dp\"\n
+            android:layout_marginRight=\"32dp\"\n
+            android:src=\"@drawable/app_icon\"/>\n
+\n
+        <TextView\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_gravity=\"center_vertical\"\n
+            android:text=\"Share\"\n
+            android:textColor=\"#737373\"\n
+            android:textSize=\"16sp\" />\n
+\n
+    </LinearLayout>\n
+\n
+    <LinearLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:clickable=\"true\"\n
+        android:foreground=\"?attr/selectableItemBackground\"\n
+        android:orientation=\"horizontal\"\n
+        android:paddingBottom=\"8dp\"\n
+        android:paddingLeft=\"@dimen/activity_margin\"\n
+        android:paddingRight=\"@dimen/activity_margin\"\n
+        android:paddingTop=\"8dp\">\n
+\n
+        <ImageView\n
+            android:layout_width=\"24dp\"\n
+            android:layout_height=\"24dp\"\n
+            android:layout_marginRight=\"32dp\"\n
+            android:src=\"@drawable/app_icon\"\n
+           />\n
+\n
+        <TextView\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_gravity=\"center_vertical\"\n
+            android:text=\"Get link\"\n
+            android:textColor=\"#737373\"\n
+            android:textSize=\"16sp\" />\n
+\n
+    </LinearLayout>\n
+\n
+    <LinearLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:clickable=\"true\"\n
+        android:foreground=\"?attr/selectableItemBackground\"\n
+        android:orientation=\"horizontal\"\n
+        android:paddingBottom=\"8dp\"\n
+        android:paddingLeft=\"@dimen/activity_margin\"\n
+        android:paddingRight=\"@dimen/activity_margin\"\n
+        android:paddingTop=\"8dp\"\n
+        android:focusable=\"true\">\n
+\n
+        <ImageView\n
+            android:layout_width=\"24dp\"\n
+            android:layout_height=\"24dp\"\n
+            android:layout_marginRight=\"32dp\"\n
+            android:src=\"@drawable/app_icon\"\n
+            android:layout_marginEnd=\"32dp\" />\n
+\n
+        <TextView\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_gravity=\"center_vertical\"\n
+            android:text=\"Make a Copy\"\n
+            android:textColor=\"#737373\"\n
+            android:textSize=\"16sp\" />\n
+\n
+    </LinearLayout>\n
+\n
+    <LinearLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:clickable=\"true\"\n
+        android:foreground=\"?attr/selectableItemBackground\"\n
+        android:orientation=\"horizontal\"\n
+        android:paddingBottom=\"8dp\"\n
+        android:paddingLeft=\"@dimen/activity_margin\"\n
+        android:paddingRight=\"@dimen/activity_margin\"\n
+        android:paddingTop=\"8dp\"\n
+        android:focusable=\"true\">\n
+\n
+        <ImageView\n
+            android:layout_width=\"24dp\"\n
+            android:layout_height=\"24dp\"\n
+            android:layout_marginRight=\"32dp\"\n
+            android:src=\"@drawable/app_icon\"\n
+            android:layout_marginEnd=\"32dp\" />\n
+\n
+        <TextView\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_gravity=\"center_vertical\"\n
+            android:text=\"Email a Copy\"\n
+            android:textColor=\"#737373\"\n
+            android:textSize=\"16sp\" />\n
+    </LinearLayout>\n
+</LinearLayout>\n
+        ]]>
+    </string>
+    <string name="activitybtm">
+    <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<android.support.design.widget.CoordinatorLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    xmlns:tools=\"http://schemas.android.com/tools\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:background=\"#efefef\">\n
+    <android.support.design.widget.AppBarLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:theme=\"@style/Widget.AppCompat.ActionBar\">\n
+\n
+      <include layout=\"@layout/toolbar\"\n
+          android:id=\"@+id/toolbar\"/>\n
+\n
+    </android.support.design.widget.AppBarLayout>\n
+\n
+    <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+        xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+        xmlns:tools=\"http://schemas.android.com/tools\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\"\n
+        android:orientation=\"vertical\"\n
+        app:layout_behavior=\"@string/appbar_scrolling_view_behavior\"\n
+        tools:context=\"info.androidhive.bottomsheet.MainActivity\"\n
+        tools:showIn=\"@layout/activity_main\">\n
+\n
+        <Button\n
+            android:id=\"@+id/btn_bottom_sheet\"\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_marginTop=\"@dimen/activity_margin\"\n
+            android:layout_gravity=\"center_horizontal\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:text=\"Show Bottom Sheet\" />\n
+\n
+        <Button\n
+            android:id=\"@+id/btn_bottom_sheet_dialog\"\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_marginTop=\"@dimen/activity_margin\"\n
+            android:layout_gravity=\"center_horizontal\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:text=\"Show Bottom Sheet Dialog\" />\n
+    </LinearLayout>\n
+   \n
+    <include layout=\"@layout/bottom_sheet\" />\n
+\n
+</android.support.design.widget.CoordinatorLayout>\n
+\n
+    ]]>
+    </string>
+<string-array name="bottomitems">
+    <item>MainActivity.java</item>
+    <item>activity_main.xml</item>
+    <item>frament_bottom_sheet.xml</item>
+    <item>bottom_sheet.xml</item>
+</string-array>
+</resources>

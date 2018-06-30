@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notificationJava">
+public class NotificationActivity extends AppCompatActivity {\n
+    NotificationManager notificationManager;\n
+\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_notification);\n
+        Button normal = findViewById(R.id.normalnotification);\n
+        Button inbox = findViewById(R.id.inboxstyle);\n
+        Button big = findViewById(R.id.bigstyle);\n
+        Toolbar toolbar = findViewById(R.id.toolbar);\n
+        toolbar.setTitle(\"Notifications\");\n
+        normal.setOnClickListener(v -> showNormal());\n
+        inbox.setOnClickListener(v -> InboxStyle());\n
+        big.setOnClickListener(v -> BigPictureStyle());\n
+\n
+\n
+    }\n
+\n
+\n
+    private NotificationManager getNotificationManager() {\n
+        if (notificationManager == null) {\n
+            notificationManager = (NotificationManager) getApplicationContext().getSystemService(\n
+                    Context.NOTIFICATION_SERVICE);\n
+        }\n
+        return notificationManager;\n
+    }\n
+\n
+    private void showNormal() {\n
+        Intent intent = new Intent(this, MainActivity.class);\n
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);\n
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,\n
+                PendingIntent.FLAG_UPDATE_CURRENT);\n
+\n
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);\n
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {\n
+            NotificationChannel channel = new NotificationChannel(Constants.PRIMARY_NOTIFICATION_CHANNEL, \"Examples\",\n
+                    NotificationManager.IMPORTANCE_DEFAULT);\n
+            channel.setLightColor(Color.GREEN);\n
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);\n
+            getNotificationManager().createNotificationChannel(channel);\n
+        }\n
+        else {\n
+            notificationManager=getNotificationManager();\n
+        }\n
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, Constants.PRIMARY_NOTIFICATION_CHANNEL)\n
+                .setSmallIcon(R.drawable.app_icon)\n
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_icon))\n
+                .setContentTitle(\"New Message\")\n
+                .setContentText(\"Normal Notification\")\n
+                .setAutoCancel(true)\n
+                .setSound(defaultSoundUri)\n
+                .setChannelId(Constants.PRIMARY_NOTIFICATION_CHANNEL)\n
+                .setContentIntent(pendingIntent);\n
+\n
+        final NotificationManagerCompat notificationManager =\n
+                NotificationManagerCompat.from(getApplicationContext());\n
+\n
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());\n
+    }\n
+\n
+    private void InboxStyle() {\n
+        Intent intent = new Intent(this, MainActivity.class);\n
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);\n
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1 /* Request code */, intent,\n
+                PendingIntent.FLAG_UPDATE_CURRENT);\n
+\n
+\n
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);\n
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {\n
+            NotificationChannel channel = new NotificationChannel(Constants.SECOND_NOTIFICATION_CHANNEL, \"Examples\",\n
+                    NotificationManager.IMPORTANCE_DEFAULT);\n
+            channel.setLightColor(Color.GREEN);\n
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);\n
+            getNotificationManager().createNotificationChannel(channel);\n
+        }\n
+        else {\n
+            notificationManager=getNotificationManager();\n
+        }\n
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, Constants.SECOND_NOTIFICATION_CHANNEL)\n
+                .setSmallIcon(R.drawable.app_icon)\n
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_icon))\n
+                .setContentTitle(\"New Message\")\n
+                .setContentText(\"Inbox Style Notification.Expand me\")\n
+                .setAutoCancel(true)\n
+                .setStyle(new NotificationCompat.InboxStyle().addLine(\"Hello\").addLine(\"First Line\")\n
+                        .addLine(\"Second Line\").addLine(\"Three New Messages For you\").setSummaryText(\"Inbox\"))\n
+                .setSound(defaultSoundUri)\n
+                .setChannelId(Constants.SECOND_NOTIFICATION_CHANNEL)\n
+                .setContentIntent(pendingIntent);\n
+        if (notificationManager != null) {\n
+            Timber.d(\"notification shown\");\n
+            notificationManager.notify(1 /* ID of notification */, notificationBuilder.build());\n
+        }\n
+\n
+\n
+    }\n
+\n
+    private void BigPictureStyle() {\n
+        Intent intent = new Intent(this, MainActivity.class);\n
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);\n
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 2/* Request code */, intent,\n
+                PendingIntent.FLAG_UPDATE_CURRENT);\n
+\n
+\n
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);\n
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {\n
+            NotificationChannel channel = new NotificationChannel(Constants.THIRD_NOTIFICATION_CHANNEL, \"Examples\",\n
+                    NotificationManager.IMPORTANCE_DEFAULT);\n
+            channel.setLightColor(Color.GREEN);\n
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);\n
+            getNotificationManager().createNotificationChannel(channel);\n
+        }\n
+        else {\n
+            notificationManager=getNotificationManager();\n
+        }\n
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, Constants.THIRD_NOTIFICATION_CHANNEL)\n
+                .setSmallIcon(R.drawable.app_icon)\n
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_icon))\n
+                .setContentTitle(\"New Message\")\n
+                .setContentText(\"Big Image Notification\")\n
+                .setAutoCancel(true)\n
+                .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.header_background))\n
+                        .bigLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_icon)).setSummaryText(\"Big Image notification\")\n
+                        .setBigContentTitle(\"Notification For You\"))\n
+                .setSound(defaultSoundUri)\n
+                .setChannelId(Constants.THIRD_NOTIFICATION_CHANNEL)\n
+                .setContentIntent(pendingIntent);\n
+        if (notificationManager != null) {\n
+            notificationManager.notify(2 /* ID of notification */, notificationBuilder.build());\n
+        }\n
+    }\n
+}\n
+\n
+    </string>
+    <string name="notificationXml">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n
+
+    <Button\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_gravity=\"center\"\n
+        android:background=\"@color/textColor\"\n
+        android:id=\"@+id/normalnotification\"\n
+        android:gravity=\"center\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:text=\"@string/normal_notification\" />\n
+\n
+    <Button\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_gravity=\"center\"\n
+        android:gravity=\"center\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:id=\"@+id/inboxstyle\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:text=\"@string/inbox_style_notification\" />\n
+\n
+    <Button\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_gravity=\"center\"\n
+        android:gravity=\"center\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:id=\"@+id/bigstyle\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:text=\"@string/bigstyle_notification\" />\n
+\n
+\n
+</LinearLayout>\n
+    ]]>
+    </string>
+</resources>

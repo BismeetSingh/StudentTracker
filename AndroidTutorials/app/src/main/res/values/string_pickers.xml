@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="dateJava">
+public class MainActivity extends AppCompatActivity{\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        DatePicker datePicker=findViewById(R.id.datepicker);\n
+        TextView dateText=findViewById(R.id.datetext);\n
+        Calendar calendar = Calendar.getInstance();\n
+        calendar.setTimeInMillis(System.currentTimeMillis());\n
+        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)\n
+                , new DatePicker.OnDateChangedListener() {\n
+                    @Override\n
+                    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {\n
+                        dateText.setText(String.format(\"Year=%d Month=%d day=%d\", year, monthOfYear + 1, dayOfMonth));\n
+\n
+\n
+                    }\n
+                });\n
+\n
+\n
+    }\n
+}\n
+</string>
+    <string name="dateXml">
+          <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<ScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:tools=\"http://schemas.android.com/tools\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\">\n
+\n
+    <LinearLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:orientation=\"vertical\">\n
+\n
+        <include\n
+            android:id=\"@+id/toolbar\"\n
+            layout=\"@layout/toolbar\" />\n
+\n
+        <DatePicker\n
+            android:id=\"@+id/datepicker\"\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_gravity=\"center\"\n
+            android:layout_marginTop=\"20dp\" />\n
+\n
+        <TextView\n
+            android:textAlignment=\"center\"\n
+            android:id=\"@+id/datetext\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_margin=\"20dp\"\n
+            android:textSize=\"20sp\"\n
+            android:textStyle=\"bold\"\n
+            tools:text=\"DatePicker\" />\n
+    </LinearLayout>\n
+</ScrollView>\n
+]]>
+    </string>
+    <string name="timeJava">
+public class MainActivity  extends AppCompatActivity{\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        TimePicker timePicker =findViewById(R.id.timepicker);\n
+        TextView view=findViewById(R.id.timepickertxt);\n
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {\n
+            @Override\n
+            public void onTimeChanged(TimePicker timeview, int hourOfDay, int minute) {\n
+                view.setText(\"Hour: \"+hourOfDay+\"\n\"+\"Minutes: \"+minute);\n
+            }\n
+        });\n
+\n
+    }\n
+}\n
+    </string>
+    <string name="timeXml">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<ScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\">\n
+\n
+    <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+        xmlns:tools=\"http://schemas.android.com/tools\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:orientation=\"vertical\">\n
+\n
+        <include\n
+            android:id=\"@+id/toolbar\"\n
+            layout=\"@layout/toolbar\" />\n
+\n
+        <TimePicker\n
+            android:id=\"@+id/timepicker\"\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_gravity=\"center\"\n
+            android:layout_marginTop=\"20dp\" />\n
+\n
+        <TextView\n
+            android:id=\"@+id/timepickertxt\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_marginTop=\"20dp\"\n
+            android:textAlignment=\"center\"\n
+            android:textSize=\"20sp\"\n
+            android:textStyle=\"bold\"\n
+            tools:text=\"Time\" />\n
+    </LinearLayout>\n
+</ScrollView>\n
+         ]]>
+    </string>
+</resources>

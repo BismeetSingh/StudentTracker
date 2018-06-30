@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SharedElementContents">
+        <item>MainActivity.java</item>
+        <item>SecondActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>second_activity.xml</item>
+    </string-array>
+
+    <string name="SharedSourceJava">
+public class MainActivity extends AppCompatActivity {\n
+    private CircleImageView imgLogo, imgProfilePic;\n
+    private TextView txtShared;\n
+\n
+    @Override\n
+    protected void onCreate(Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.layout_main);\n
+        imgLogo = findViewById(R.id.imgAppLogo);\n
+        imgProfilePic = findViewById(R.id.imgPic);\n
+        txtShared = findViewById(R.id.txvSharedElement);\n
+    }\n
+\n
+\n
+    public void sharedElementTransition(View view) {\n
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {\n
+            Pair[] pair = new Pair[3];\n
+            pair[0] = new Pair&lt;View, String>(imgLogo, \"logo_shared\");\n
+            pair[1] = new Pair&lt;View, String>(imgProfilePic, \"pic_shared\");\n
+            pair[2] = new Pair&lt;View, String>(txtShared, \"name_shared\");\n
+\n
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,\n
+                    pair);\n
+            Intent intent = new Intent(MainActivity.this, SharedElementDestinationActivity.class);\n
+            startActivity(intent, options.toBundle());\n
+        }\n
+    }\n
+}\n
+\n
+    </string>
+    <string name="SharedDestJava">
+    public class SecondActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+    if(Build.VERSION.SDK_INT>=21){\n
+    getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);\n
+    }\n
+    super.onCreate(savedInstanceState);\n
+    setContentView(R.layout.layout_transition_destination);\n
+    }\n
+    }\n
+    </string>
+    <string name="SharedSourceXml">
+           <![CDATA[
+           <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout\n
+    xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:background=\"@android:color/white\"\n
+    android:orientation=\"vertical\">\n
+    <LinearLayout\n
+        android:id=\"@+id/shared_element\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:gravity=\"center\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:orientation=\"horizontal\"\n
+        android:onClick=\"sharedElementTransition\"\n
+        android:padding=\"15dp\">\n
+\n
+        <de.hdodenhof.circleimageview.CircleImageView\n
+            android:id=\"@+id/imgAppLogo\"\n
+            android:layout_width=\"50dp\"\n
+            android:layout_height=\"50dp\"\n
+            android:src=\"@drawable/header_background\"\n
+            android:transitionName=\"logo_shared\"/>\n
+\n
+        <TextView\n
+            android:id=\"@+id/txvSharedElement\"\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:layout_margin=\"10dp\"\n
+            android:text=\"@string/app_name\"\n
+            android:textColor=\"@android:color/black\"\n
+            android:textSize=\"22sp\"\n
+            android:transitionName=\"name_shared\"/>\n
+\n
+        <de.hdodenhof.circleimageview.CircleImageView\n
+            android:id=\"@+id/imgPic\"\n
+            android:layout_width=\"50dp\"\n
+            android:layout_height=\"50dp\"\n
+            android:src=\"@drawable/header_background\"\n
+            android:transitionName=\"pic_shared\"/>\n
+\n
+    </LinearLayout>\n
+    </LinearLayout>\n
+\n
+\n
+           ]]>
+    </string>
+
+    <string name="SharedDestXml">
+        <![CDATA[
+<RelativeLayout\n
+    xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:background=\"@android:color/white\"\n
+    android:gravity=\"center_horizontal\"\n
+    android:id=\"@+id/click_reveal\">\n
+
+    <TextView\n
+        android:id=\"@+id/activity_title\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:text=\"@string/app_name\"\n
+        android:textColor=\"@android:color/darker_gray\"\n
+        android:textSize=\"30sp\"\n
+        android:transitionName=\"name_shared\"\n
+        android:layout_centerHorizontal=\"true\" />\n
+\n
+    <LinearLayout\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:orientation=\"horizontal\"\n
+        android:id=\"@+id/linearLayout\"\n
+        android:layout_alignParentStart=\"true\"\n
+        android:layout_below=\"@+id/activity_title\">\n
+\n
+        <de.hdodenhof.circleimageview.CircleImageView\n
+            android:id=\"@+id/logo_reveal\"\n
+            android:layout_width=\"200dp\"\n
+            android:layout_height=\"175dp\"\n
+            android:layout_weight=\"1\"\n
+            android:src=\"@drawable/header_background\"\n
+            android:transitionName=\"logo_shared\"/>\n
+\n
+        <de.hdodenhof.circleimageview.CircleImageView\n
+            android:layout_width=\"200dp\"\n
+            android:layout_height=\"175dp\"\n
+            android:layout_weight=\"1\"\n
+            android:src=\"@drawable/header_background\"\n
+            android:transitionName=\"pic_shared\"/>\n
+\n
+    </LinearLayout>\n
+
+</RelativeLayout>\n
+\n
+           ]]>
+    </string>
+
+</resources>

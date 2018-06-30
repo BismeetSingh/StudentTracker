@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Archcomponents">
+        <item>Introduction</item>
+        <item>MainActivity.java</item>
+        <item>MyViewModel.java</item>
+        <item>activity_viewmodel.xml</item>
+    </string-array>
+    <string name="abtarchcomponents">
+            Architecture components were introduced at Google IO 2017.\n
+        The main focus is to make it easy to use clean and testable code using patterns like MVP and MVVM.\n\n
+        Architecture components make it simpler by bringing us classes like ViewModel.LiveData and Room.\n\n
+        Also,we use the Data Binding library in the example.\n\n
+        DataBinding is Googles version of butterknife library.\n\n
+        To enable databinding add this to ur module level gradle in the android section:\n\n
+        dataBinding {\n
+        enabled = true\n
+    }\n
+        ViewModels are classes that persist throughout the lifecycle.\n\n They are lifecycle aware and thus make it easier to
+        manage the states of your activity.\n\n
+        First of all ,one must include the lifecycle dependencies in the gradle.\n\n
+        To build a viewmodel class,one must extend the ViewModel Class.\n\n
+        LiveData are observables and are used as callbacks in the viewmodels.\n
+    </string>
+    <string name="archMain">
+public class MainActivity extends AppCompatActivity {\n
+    ActivityViewmodelBinding activityViewmodelBinding;\n
+\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        activityViewmodelBinding = DataBindingUtil.setContentView(this, R.layout.activity_viewmodel);\n
+        MyViewModel myViewModel = ViewModelProviders.of(this).get(MyViewModel.class);\n
+        Toolbar toolbar=findViewById(R.id.toolbar);\n
+        toolbar.setTitle(\"ViewModels\");\n
+        activityViewmodelBinding.setModel(myViewModel);\n
+        myViewModel.toastmsg.observe(this, new Observer&lt;String&gt;() {\n
+            @Override\n
+            public void onChanged(@Nullable String s) {\n
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();\n
+            }\n
+        });\n
+\n
+\n
+    }\n
+}\n
+\n
+    </string>
+<string name="ModelMain">
+    public class MyViewModel extends ViewModel {\n
+public MutableLiveData&lt;String&gt; toastmsg=new MutableLiveData&lt;&gt;();\n
+\n
+    public void onBtnClick(){\n
+        Timber.d(\"Clicked\");\n
+        toastmsg.setValue(\"Hey Sent A Toast\");\n
+\n
+    }\n
+}\n
+\n
+
+</string>
+    <string name="actarchmain">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<layout\n
+    xmlns:android=\"http://schemas.android.com/apk/res/android\">\n
+    <data>\n
+        <variable\n
+            name=\"model\"\n
+            type=\"com.app.bissudroid.androidtutorials.outputs.animations.MyViewModel\"/>\n
+    </data>\n
+\n
+<LinearLayout\n
+    android:orientation=\"vertical\" android:layout_width=\"match_parent\"\n
+\n
+    android:layout_height=\"match_parent\">\n
+    <include layout=\"@layout/toolbar\" android:id=\"@+id/toolbar\"/>\n
+<Button\n
+    android:layout_width=\"wrap_content\"\n
+    android:layout_gravity=\"center\"\n
+    android:text=\"Click me\"\n
+    android:layout_marginTop=\"50dp\"\n
+    android:onClick=\"@{(v)->model.onBtnClick()}\"\n
+    android:id=\"@+id/clickbtn\"\n
+    android:layout_height=\"wrap_content\" />\n
+</LinearLayout>\n
+</layout>\n
+         ]]>
+    </string>
+</resources>

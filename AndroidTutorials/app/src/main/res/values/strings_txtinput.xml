@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="TextInputJava">
+public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Toolbar toolbar=findViewById(R.id.toolbar);\n
+        toolbar.setTitle(\"TextInputLayout\");\n
+        EditText username=findViewById(R.id.username);\n
+        EditText password=findViewById(R.id.password);\n
+        TextInputLayout userlayout=findViewById(R.id.userlayout);\n
+        TextInputLayout passwordlayout=findViewById(R.id.passwordlayout);\n
+        Button click=findViewById(R.id.clickbtn);\n
+        click.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                String user=username.getText().toString();\n
+                String pwd=password.getText().toString();\n
+                if(user.isEmpty()){\n
+                    userlayout.setError(\"Please fill a username\");\n
+                }\n
+                else {\n
+                    userlayout.setError(null);\n
+                }\n
+                 if(pwd.isEmpty()){\n
+                    passwordlayout.setError(\"Please fill a  password\");\n
+                }\n
+                else {\n
+                    passwordlayout.setError(null);\n
+                 }\n
+                if(!user.isEmpty() &amp; !pwd.isEmpty()) {\n
+\n
+                    Toast.makeText(MainActivity.this, \"Click Successful\", Toast.LENGTH_SHORT).show();\n
+                }\n
+            }\n
+        });\n
+    }\n
+}\n
+\n
+</string>
+    <string name="TextInputXml">
+         <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n
+\n
+    <include\n
+        android:id=\"@+id/toolbar\"\n
+        layout=\"@layout/toolbar\" />\n
+\n
+    <android.support.design.widget.TextInputLayout\n
+        android:id=\"@+id/userlayout\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:layout_marginTop=\"10dp\">\n
+\n
+        <EditText\n
+            android:id=\"@+id/username\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:hint=\"Username\"\n
+            android:inputType=\"text\" />\n
+    </android.support.design.widget.TextInputLayout>\n
+    \n
+    <android.support.design.widget.TextInputLayout\n
+    android:id=\"@+id/passwordlayout\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"wrap_content\"\n
+    android:layout_marginTop=\"10dp\"\n
+    app:passwordToggleEnabled=\"true\">\n
+    \n
+    <EditText\n
+    android:id=\"@+id/password\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:hint=\"Password\"\n
+    android:inputType=\"textPassword\" />\n
+</android.support.design.widget.TextInputLayout>\n
+<Button\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_marginTop=\"20dp\"\n
+    android:text=\"Click me\"\n
+    android:id=\"@+id/clickbtn\"\n
+    android:layout_height=\"wrap_content\" />\n
+    \n
+    </LinearLayout>\n
+    ]]>
+    </string>
+</resources>

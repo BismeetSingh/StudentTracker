@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="CustomSection">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>custom_view.xml</item>
+        <item>custom_background.xml</item>
+    </string-array>
+    <string name="Toastjava">
+
+public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Button button=findViewById(R.id.clickbtn);\n
+        button.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                Toast toast=new Toast(getApplicationContext());\n
+                LayoutInflater layoutInflater=getLayoutInflater();\n
+                View view=layoutInflater.inflate(R.layout.custom_toast, findViewById(R.id.toastcustom));\n
+                toast.setView(view);\n
+                toast.setDuration(Toast.LENGTH_LONG);\n
+                toast.setGravity(Gravity.CENTER,0,0);\n
+                toast.show();\n
+\n
+\n
+            }\n
+        });\n
+\n
+    }\n
+}\n
+\n
+    </string>
+    <string name="ToastXML">
+        <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n
+    <Button\n
+        android:id=\"@+id/clickbtn\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:layout_gravity=\"center\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:text=\"Click me\"\n
+        android:textColor=\"@color/colorPrimary\"\n
+        android:textSize=\"20sp\" />\n
+\n
+   \n
+</LinearLayout>\n
+        ]]>
+
+
+
+    </string>
+    <string name="CustomToastXml">
+         <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:id=\"@+id/toastcustom\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n\n
+<TextView\n
+    android:layout_width=\"match_parent\"\n
+    android:gravity=\"center\"\n
+    android:text=\"You clicked the button\"\n
+    android:textSize=\"20sp\"\n
+    android:padding=\"10dp\"\n
+    android:layout_margin=\"10dp\"\n
+    android:textAppearance=\"@android:style/TextAppearance.DeviceDefault.Large\"\n
+    android:textStyle=\"italic\"\n
+    android:background=\"@drawable/toast_background\"\n
+    android:layout_height=\"wrap_content\" />\n
+</LinearLayout>\n
+]]>
+    </string>
+    <string name="drawableToast">
+        <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<shape xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:shape=\"rectangle\">\n
+    <stroke android:color=\"@color/colorPrimary\" android:width=\"2dp\"/>\n
+    <solid android:color=\"@color/textColor\"/>\n
+    <corners android:radius=\"20dp\"/>\n
+    <padding android:left=\"4dp\" android:bottom=\"4dp\" android:right=\"4dp\" android:top=\"4dp\"/>\n
+</shape>\n
+]]>
+
+    </string>
+    <string name="activitydialog">
+        public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Button button = findViewById(R.id.clickbtn);\n
+        button.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);\n
+                LayoutInflater layoutInflater = getLayoutInflater();\n
+                View view = layoutInflater.inflate(R.layout.custom_dialog, findViewById(R.id.dialoglayout));\n
+                builder.setView(view);\n
+                EditText editText = view.findViewById(R.id.edittext);\n
+\n
+                builder.setPositiveButton(\"Okay\", new DialogInterface.OnClickListener() {\n
+                    @Override\n
+                    public void onClick(DialogInterface dialog, int which) {\n
+                        Toast.makeText(CustomDialogActivity.this, \"text is \" + editText.getText().toString(), Toast.LENGTH_SHORT).show();\n
+\n
+                    }\n
+                });\n
+                builder.setNegativeButton(\"No\", new DialogInterface.OnClickListener() {\n
+                    @Override\n
+                    public void onClick(DialogInterface dialog, int which) {\n
+                        Toast.makeText(CustomDialogActivity.this, \"No clicked\", Toast.LENGTH_SHORT).show();\n
+\n
+                        dialog.dismiss();\n
+\n
+                    }\n
+                });\n
+                builder.create().show();\n
+\n
+\n
+            }\n
+        });\n
+\n
+    }\n
+}\n
+\n
+
+    </string>
+    <string name="customdialog">
+ <![CDATA[
+ <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:id=\"@+id/dialoglayout\"\n
+    android:orientation=\"vertical\">\n
+<EditText\n
+    android:layout_width=\"match_parent\"\n
+    android:id=\"@+id/edittext\"\n
+    android:inputType=\"text\"\n
+    android:hint=\"Dialog text\"\n
+    android:background=\"@drawable/toast_background\"\n
+    android:padding=\"20dp\"\n
+    android:layout_margin=\"20dp\"\n
+    android:layout_height=\"match_parent\" />\n
+</LinearLayout>\n
+ ]]>
+
+    </string>
+</resources>

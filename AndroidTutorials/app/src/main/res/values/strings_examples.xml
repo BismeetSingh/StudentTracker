@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="examples">
+        <item>Custom Toast</item>
+        <item>Custom Alert Dialog</item>
+        <item>RecyclerView</item>
+        <item>Fragment Communication</item>
+        <item>SharedPreferences</item>
+        <item>Menus</item>
+        <item>Notifications</item>
+        <item>Bottom Sheets</item>
+        <item>ViewPager</item>
+        <item>Architecture Components</item>
+
+
+    </string-array>
+</resources>

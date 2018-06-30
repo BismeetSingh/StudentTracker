@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="model"
+            type="com.app.bissudroid.androidtutorials.outputs.animations.MyViewModel"/>
+    </data>
+
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+<Button
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:text="Click me"
+    android:layout_marginTop="50dp"
+    android:onClick="@{(v)->model.onBtnClick()}"
+    android:id="@+id/clickbtn"
+    android:layout_height="wrap_content" />
+</LinearLayout>
+</layout>

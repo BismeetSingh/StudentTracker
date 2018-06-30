@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string name="TextViewXML">
+        <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\" \n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n
+\n
+    <TextView \n
+        android:layout_width=\"match_parent\" \n
+        android:layout_height=\"match_parent\"\n
+        android:text=\"This is a TextView\"\n
+        android:textAlignment=\"center\"\n
+        android:textStyle=\"italic\"\n
+        android:gravity=\"center\"\n
+        android:textSize=\"30sp\" />\n\n
+</LinearLayout>]]>
+    </string>
+    <string name="EditTextXML">
+          <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\" \n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n
+\n
+    <EditText \n
+        android:layout_width=\"match_parent\"
+        android:layout_height=\"match_parent\"
+        android:hint=\"Username\" \n
+        android:textAlignment=\"center\"\n
+        android:textStyle=\"italic\"\n
+        android:gravity=\"center\"\n
+        android:textSize=\"30sp\" />\n\n
+        <EditText \n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\"\n
+        android:hint=\"Password\" \n
+        android:textAlignment=\"center\"\n
+        android:textStyle=\"italic\"\n
+        android:gravity=\"center\"\n
+        android:textSize=\"30sp\" />\n
+</LinearLayout>]]>
+    </string>
+    <string name="ButtonXML">
+          <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_marginTop=\"20dp\"\n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n\n
+<Button\n
+
+    android:layout_width=\"wrap_content\" \n
+    android:layout_gravity=\"center\"\n
+    android:text=\"Click me\" \n
+    android:textSize=\"20sp\" \n
+    android:id=\"@+id/clickbtn\" \n
+    android:textColor=\"@color/colorPrimary\" \n
+    android:layout_height=\"wrap_content\" />\n \n
+    <ImageButton
+        android:layout_gravity=\"center\"\n
+        android:layout_marginTop=\"20dp\" \n
+        android:layout_width=\"wrap_content\" \n
+        android:src=\"@drawable/training\" \n
+        android:id=\"@+id/click_this\" \n
+        android:layout_height=\"wrap_content\" /> \n
+</LinearLayout> ]]>
+    </string>
+    <string name="ButtonJava">
+        public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Button button=findViewById(R.id.clickbtn);\n
+        button.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                Toast.makeText(MainActivity.this, "Button was clicked", Toast.LENGTH_SHORT).show();\n
+            }\n
+        });\n
+        ImageButton imageButton=findViewById(R.id.click_this);\n
+        imageButton.setOnClickListener(new View.OnClickListener() {v
+            @Override\n
+            public void onClick(View v) {\n
+                Toast.makeText(MainActivity.this, \"ImageButton was clicked\", Toast.LENGTH_SHORT).show();\n
+            }\n
+        });\n
+    }\n
+}\n
+
+    </string>
+    <string name="ImageViewXML">
+          <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n\n
+<ImageView\n
+    android:layout_width=\"200dp\"\n
+    android:id=\"@+id/images\"\n
+    android:src=\"@drawable/training\"\n
+    android:layout_gravity=\"center\"\n
+    android:layout_marginTop=\"20dp\"\n
+    android:layout_height=\"200dp\" />\n
+</LinearLayout]]>\n
+    </string>
+    <string name="ImageViewJava">
+public class MainActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        ImageView imageView=findViewById(R.id.images);\n
+        imageView.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                Toast.makeText(MainActivity.this, \"Image was clicked\", Toast.LENGTH_SHORT).show();\n
+            }\n
+        });\n
+    }\n
+}\n
+    </string>
+
+    <string name="SwitchesXML">
+         <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n\n
+
+
+
+    <android.support.v7.widget.SwitchCompat \n
+        android:id=\"@+id/switches\"\n
+        android:layout_width=\"wrap_content\"
+        android:layout_height=\"match_parent\"\n
+        android:layout_gravity=\"center\" \n
+        android:checked=\"false\"\n
+        android:text=\"Switch Example\" \n
+        android:textAppearance=\"?android:attr/textAppearanceMedium\" \n
+        android:textColor=\"@color/colorPrimary\" />\n
+</LinearLayout>\n
+]]>
+    </string>
+    <string name="SwitchesJava">
+        public class MainActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        SwitchCompat switchCompat = findViewById(R.id.switches);\n
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {\n\n
+            @Override\n
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {\n
+                Toast.makeText(SwitchesImplementation.this, "" + isChecked, Toast.LENGTH_SHORT).show();\n
+            }\n
+        });\n
+    }
+}
+
+    </string>
+    <string name="ToggleXML">
+          <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:layout_gravity=\"center\"\n
+            android:orientation=\"vertical\">\n\n
+
+
+
+    <ToggleButton
+        android:id=\"@+id/togglebtn\"\n
+        android:layout_width=\"wrap_content\" \n
+        android:layout_height=\"wrap_content\"\n
+        android:layout_gravity=\"center\"\n
+        android:layout_marginTop=\"50dp\"\n
+        android:checked=\"false\"\n
+        android:textAppearance=\"?android:attr/textAppearanceMedium\"\n
+        android:textColor=\"@color/colorPrimary\"v
+        android:textOff=\"Off\"\n
+        android:textOn=\"On\" />\n
+</LinearLayout>]]>\n
+    </string>
+    <string name="ToggleJava">
+        public class MainActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        ToggleButton toggleButton=findViewById(R.id.togglebtn);\n
+         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {\n
+            @Override\n
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {\n
+        Toast.makeText(this, \"Button \"+isChecked, Toast.LENGTH_SHORT).show();\n
+
+            }\n
+        });\n
+
+    }
+}
+    </string>
+    <string name="ProgressDialogXML">
+          <![CDATA[
+          <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n\n
+    <Button\n
+        android:id=\"@+id/dialog\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:layout_gravity=\"center\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:gravity=\"center\"\n
+        android:text=\"Start Dialog\" />\n
+</LinearLayout>\n
+          ]]>
+    </string>
+    <string name="ProgressDialogJava">\n
+        public class MainActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Button btn = findViewById(R.id.dialog);\n
+        btn.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                ProgressDialog progressDialog = ProgressDialog.show(ProgressDialogImplementation.this, \"Example\", \"Tap Screen to Dismiss\", true);\n
+                progressDialog.setCanceledOnTouchOutside(true);\n
+                progressDialog.show();\n
+            }\n
+        });
+    }
+}
+    </string>
+    <string name="RadioXML">
+          <![CDATA[
+          <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n\n
+
+
+
+    <RadioGroup
+        android:id=\"@+id/radiogroup\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"match_parent\">\n\n
+
+        <RadioButton
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:text=\"First Option\" />\n\n
+
+        <RadioButton\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:text=\"Second Option\" />\n\n
+
+        <RadioButton\n
+            android:layout_width=\"wrap_content\"\n
+            android:layout_height=\"wrap_content\"\n
+            android:text=\"Third Option\" />\n\n
+    </RadioGroup>\n
+</LinearLayout>\n
+          ]]>
+    </string>
+    <string name="RadioJava">
+        public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+
+        RadioGroup radioGroup = findViewById(R.id.radiogroup);\n
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {\n
+            @Override\n
+            public void onCheckedChanged(RadioGroup group, int checkedId) {\n
+                Toast.makeText(RadioButtonImplementation.this, \"Checked Item Changed\", Toast.LENGTH_SHORT).show();\n
+
+            }\n
+        });\n
+    }
+}
+
+
+    </string>
+    <string name="CheckBoxXML">
+          <![CDATA[
+          <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n\n
+
+    <CheckBox\n
+        android:id=\"@+id/first\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:layout_gravity=\"center\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:gravity=\"center\"\n
+        android:onClick=\"onCheckboxClicked\"\n
+        android:text=\"First Choice\" />\n\n
+activity_progress_dialog
+    <CheckBox\n
+        android:id=\"@+id/second\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"wrap_content\"\n
+
+        android:onClick=\"onCheckboxClicked\"\n
+        android:text=\"Second Choice\" />\n\n
+</LinearLayout>\n
+          ]]>
+    </string>
+
+    <string name="WebviewXML">
+          <![CDATA[
+          <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n\n
+
+
+    <WebView\n
+        android:id=\"@+id/webview\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\"></WebView>\n
+</LinearLayout>\n
+          ]]>
+    </string>
+
+    <string name="WebviewJava">
+public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        WebView webView = findViewById(R.id.webview);\n
+        webView.loadUrl(\"https://www.google.com\");\n
+    }\n
+}
+
+    </string>
+
+    <string name="CheckBoxJava">
+public class MainActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Toolbar toolbar = findViewById(R.id.toolbar);\n
+        toolbar.setTitle("CheckBox");\n
+    }\n
+
+    public void onCheckboxClicked(View view) {\n
+        boolean checked = ((CheckBox) view).isChecked();\n
+        switch (view.getId()) {\n
+            case R.id.first:\n
+                if (checked) Toast.makeText(this, \"First checked\", Toast.LENGTH_SHORT).show();\n
+                else Toast.makeText(this, \"First unchecked\", Toast.LENGTH_SHORT).show();\n
+                break;\n
+            case R.id.second:\n
+                if (checked) Toast.makeText(this, \"Second checked\", Toast.LENGTH_SHORT).show();\n
+                else Toast.makeText(this, \"Second unchecked\", Toast.LENGTH_SHORT).show();\n
+        }\n
+    }\n
+}
+    </string>
+    <string name="SpinnerXML">
+          <![CDATA[
+          <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:orientation=\"vertical\"\n
+     android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\">\n\n
+    <Spinner\n
+        android:layout_width=\"wrap_content\"\n
+         android:layout_marginTop=\"50dp\"\n
+
+        android:id=\"@+id/spinner\"\n
+        android:entries=\"@array/entries\"\n
+        android:layout_height=\"wrap_content\">\n
+        </Spinner>\n
+</LinearLayout>\n\n
+          ]]>
+    </string>
+    <string name="SpinnerJava">
+        public class MainActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Toolbar toolbar=findViewById(R.id.toolbar);\n
+        toolbar.setTitle("Spinner");\n
+        Spinner spinner = findViewById(R.id.spinner);\n
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {\n
+            @Override\n
+            <![CDATA[ public void onItemSelected(AdapterView<?\> parent, View view, int position, long id) {\n]]>
+                Toast.makeText(SpinnerImplementation.this, parent.getSelectedItem().toString() + \" Selected\", Toast.LENGTH_SHORT).show();\n
+            }\n
+
+            @Override\n
+           <![CDATA[  public void onNothingSelected(AdapterView<?> parent) {\n]]>
+
+            }\n
+        });\n
+    }\n
+}
+    </string>
+    <string name="EntriesSpinner">
+          <![CDATA[
+         <string-array name=\"entries\">\n
+             <item>Mango</item>\n
+             <item>Apple</item>\n
+             <item>Orange</item>\n
+             <item>Pear</item>\n
+             <item>Strawberry</item>\n\n
+
+         </string-array>\n
+         ]]>
+
+    </string>
+    <string name="seekbarxml">
+        <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n
+<include layout=\"@layout/toolbar\" android:id=\"@+id/toolbar\"/>\n
+    <SeekBar\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_gravity=\"center\"\n
+        android:id=\"@+id/seekbar\"\n
+        android:layout_height=\"match_parent\" />\n
+</LinearLayout>\n
+        ]]>
+    </string>
+
+    <string name="seekbarjava">
+
+        public class MainActivity  extends AppCompatActivity{\n
+        @Override\n
+        protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        SeekBar seekBar=findViewById(R.id.seekbar);\n
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {\n
+        @Override\n
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {\n
+        Toast.makeText(MainActivity.this, \"Progress is :\"+progress, Toast.LENGTH_SHORT).show();\n
+        }\n
+        \n
+        @Override\n
+        public void onStartTrackingTouch(SeekBar seekBar) {\n
+        Toast.makeText(MainActivity.this, \"Touch started\", Toast.LENGTH_SHORT).show();\n
+        \n
+        }\n
+        \n
+        @Override\n
+        public void onStopTrackingTouch(SeekBar seekBar) {\n
+        Toast.makeText(MainActivity.this, \"Touch stopped\", Toast.LENGTH_SHORT).show();\n
+        \n
+        }\n
+        });\n
+        }\n
+        }\n
+
+
+    </string>
+
+</resources>

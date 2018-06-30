@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SharedPreferences">
+        <item>RegistrationActivity.java</item>
+        <item>LoginActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>activity_login.xml</item>
+    </string-array>
+    <string name="RegistrationActivity">
+public class RegistrationActivity extends AppCompatActivity {\n
+    TextInputLayout userlayout, passwordlayout;\n
+    EditText username, password;\n
+    Button button;\n
+    SharedPreferences sharedPreferences;\n
+\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        userlayout = findViewById(R.id.userlayout);\n
+        Toolbar toolbar=findViewById(R.id.toolbar);\n
+        toolbar.setTitle(\"SharedPreferences\");\n
+        passwordlayout = findViewById(R.id.passwordlayout);\n
+        username = findViewById(R.id.username);\n
+        password = findViewById(R.id.password);\n
+        button=findViewById(R.id.registerbtn);\n
+        sharedPreferences=getSharedPreferences(\"login\",MODE_PRIVATE);\n
+        button.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                if(!username.getText().toString().isEmpty() &amp;&amp; !password.getText().toString().isEmpty()){\n
+                    Toast.makeText(RegistrationActivity.this, \"Registering\", Toast.LENGTH_SHORT).show();\n
+                    SharedPreferences.Editor editor=sharedPreferences.edit();\n
+\n
+                    editor.putString(\"name\",username.getText().toString());\n
+                    editor.putString(\"password\",password.getText().toString());\n
+                    editor.apply();\n
+                    Intent intent=new Intent(RegistrationActivity.this,LoginActivity.class);\n
+                    startActivity(intent);\n
+                    finish();\n
+                }\n
+\n
+            }\n
+        });\n
+    }\n
+\n
+    @Override\n
+    protected void onResume() {\n
+        super.onResume();\n
+        if(sharedPreferences!=null){\n
+            if(sharedPreferences.getBoolean(\"isloggedin\",false)){\n
+                Intent intent=new Intent(RegistrationActivity.this,LoginActivity.class);\n
+                startActivity(intent);\n
+\n
+            }\n
+        }\n
+    }\n
+}\n
+\n
+    </string>
+    <string name="LoginActivity">
+public class LoginActivity extends AppCompatActivity {\n
+    TextInputLayout userlayout,passwordlayout;\n
+    EditText username,password;\n
+    SharedPreferences sharedPreferences;\n
+    Button button;\n
+    Button logout;\n
+\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_login);\n
+        Toolbar toolbar=findViewById(R.id.toolbar);\n
+        toolbar.setTitle(\"SharedPreferences\");\n
+        userlayout=findViewById(R.id.userlayout);\n
+        passwordlayout=findViewById(R.id.passwordlayout);\n
+        username=findViewById(R.id.username);\n
+        password=findViewById(R.id.password);\n
+        button=findViewById(R.id.loginbtn);\n
+        logout=findViewById(R.id.logoutbtn);\n
+        sharedPreferences=getSharedPreferences(\"login\",MODE_PRIVATE);\n
+        button.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                String user=username.getText().toString();;\n
+                String pass=password.getText().toString();\n
+                if(!user.isEmpty() &amp;&amp; !pass.isEmpty()){\n
+                    String oldname=sharedPreferences.getString(\"name\",\"\");\n
+                    String oldpwd=sharedPreferences.getString(\"password\",\"\");\n
+                    if(user.equals(oldname) &amp;&amp; pass.equals(oldpwd)){\n
+                        Toast.makeText(LoginActivity.this, \"Login Successful\", Toast.LENGTH_SHORT).show();\n
+                        sharedPreferences.edit().putBoolean(\"isloggedin\",true).apply();\n
+                        logout.setVisibility(View.VISIBLE);\n
+                        username.setVisibility(View.INVISIBLE);\n
+                        password.setVisibility(View.INVISIBLE);\n
+                        button.setVisibility(View.INVISIBLE);\n
+                        userlayout.setVisibility(View.GONE);\n
+                        passwordlayout.setVisibility(View.GONE);\n
+                    }\n
+                    else {\n
+                        Toast.makeText(LoginActivity.this, \"Login Failed\", Toast.LENGTH_SHORT).show();\n
+                    }\n
+\n
+\n
+                }\n
+\n
+            }\n
+        });\n
+        logout.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                sharedPreferences.edit().clear().apply();\n
+                startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));\n
+                finish();\n
+            }\n
+        });\n
+\n
+    }\n
+\n
+\n
+    @Override\n
+    protected void onResume() {\n
+        super.onResume();\n
+        if(sharedPreferences!=null &amp;&amp; sharedPreferences.getBoolean(\"isloggedin\",false)){\n
+            logout.setVisibility(View.VISIBLE);\n
+            button.setVisibility(View.INVISIBLE);\n
+            username.setVisibility(View.INVISIBLE);\n
+            password.setVisibility(View.INVISIBLE);\n
+            userlayout.setVisibility(View.GONE);\n
+            passwordlayout.setVisibility(View.GONE);\n
+        }\n
+    }\n
+}\n
+\n
+
+    </string>
+    <string name="activity_main_preferences">
+         <![CDATA[
+         <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n
+<include layout=\"@layout/toolbar\" android:id=\"@+id/toolbar\"/>\n
+    <android.support.design.widget.TextInputLayout\n
+        android:id=\"@+id/userlayout\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\">\n
+\n
+        <EditText\n
+            android:id=\"@+id/username\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:hint=\"Username\" />\n
+    </android.support.design.widget.TextInputLayout>\n
+\n
+    <android.support.design.widget.TextInputLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:id=\"@+id/passwordlayout\"\n
+        app:passwordToggleEnabled=\"true\">\n
+\n
+        <EditText\n
+            android:id=\"@+id/password\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:hint=\"Password\"\n
+            android:inputType=\"textPassword\" />\n
+    </android.support.design.widget.TextInputLayout>\n
+    <Button\n
+        android:layout_width=\"wrap_content\"\n
+        android:gravity=\"center\"\n
+        android:layout_gravity=\"center\"\n
+        android:text=\"Register\"\n
+        android:id=\"@+id/registerbtn\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:textSize=\"20sp\"\n
+        android:layout_height=\"wrap_content\" />\n
+</LinearLayout>\n
+         ]]>
+
+
+    </string>
+    <string name="activity_login">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    xmlns:tools=\"http://schemas.android.com/tools\"\n
+    android:orientation=\"vertical\">\n
+\n
+    <include layout=\"@layout/toolbar\" android:id=\"@+id/toolbar\"/>\n
+    <android.support.design.widget.TextInputLayout\n
+        android:id=\"@+id/userlayout\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\">\n
+\n
+        <EditText\n
+            android:id=\"@+id/username\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:hint=\"Username\" />\n
+    </android.support.design.widget.TextInputLayout>\n
+\n
+    <android.support.design.widget.TextInputLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:id=\"@+id/passwordlayout\"\n
+        app:passwordToggleEnabled=\"true\">\n
+\n
+        <EditText\n
+            android:id=\"@+id/password\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:hint=\"Password\"\n
+            android:inputType=\"textPassword\" />\n
+    </android.support.design.widget.TextInputLayout>\n
+    <Button\n
+        android:layout_width=\"wrap_content\"\n
+        android:gravity=\"center\"\n
+        android:id=\"@+id/loginbtn\"\n
+        android:layout_gravity=\"center\"\n
+        android:text=\"Login\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:textSize=\"20sp\"\n
+        android:layout_height=\"wrap_content\" />\n
+    <Button\n
+        android:layout_width=\"wrap_content\"\n
+        android:gravity=\"center\"\n
+        android:id=\"@+id/logoutbtn\"\n
+        android:layout_gravity=\"center\"\n
+        android:text=\"Logout\"\n
+        android:visibility=\"invisible\"\n
+        tools:visibility=\"visible\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:textSize=\"20sp\"\n
+        android:layout_height=\"wrap_content\" />\n
+</LinearLayout>\n
+         ]]>
+
+    </string>
+</resources>

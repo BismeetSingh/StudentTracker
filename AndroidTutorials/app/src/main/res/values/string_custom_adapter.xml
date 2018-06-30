@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Adapter">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>User.java</item>
+        <item>CustomAdapter.java</item>
+        <item>listitem.xml</item>
+    </string-array>
+</resources>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fragmentcommunication">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>FragmentOne.java</item>
+        <item>FragmentTwo.java</item>
+        <item>fragment_one.xml</item>
+        <item>fragment_two.xml</item>
+        <item>Communicator.java</item>
+
+    </string-array>
+    <string name="MainActivityComm">
+public class MainActivity extends AppCompatActivity implements Communicator {\n
+    FragmentManager fragmentManager;\n
+    String datavalue;\n
+    FragmentTransaction fragmentTransaction;\n
+    @Override\n
+    protected void onCreate(Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_communicator);\n
+        fragmentManager=getSupportFragmentManager();\n
+        fragmentTransaction=fragmentManager.beginTransaction();\n
+\n
+        fragmentTransaction.add(R.id.framelayout,new FragmentOne()).addToBackStack(null);\n
+        fragmentTransaction.add(R.id.framelayout2,new FragmentTwo()).addToBackStack(null);\n
+        fragmentTransaction.commit();\n
+    }\n
+\n
+    @Override\n
+    public void send(String data) {\n
+        FragmentTwo fragmentTwo= (FragmentTwo) fragmentManager.findFragmentById(R.id.framelayout2);\n
+        fragmentTwo.setData(data);\n
+        datavalue=data;\n
+}\n
+}\n
+    </string>
+    <string name="actComm">
+          <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout\n
+    xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    xmlns:tools=\"http://schemas.android.com/tools\"\n
+    android:layout_width=\"match_parent\"\n
+    android:orientation=\"vertical\"\n
+    android:layout_height=\"match_parent\">\n
+\n
+    <FrameLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\"\n
+        android:id=\"@+id/framelayout\"\n
+        android:background=\"@color/colorAccent\"\n
+        android:layout_weight=\"1\"\n
+        tools:context=\".MainActivity\"/>\n
+\n
+    <FrameLayout\n
+        android:layout_weight=\"1\"\n
+        android:background=\"@color/colorPrimary\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\"\n
+        android:id=\"@+id/framelayout2\"\n
+        tools:context=\".MainActivity\">\n
+\n
+    </FrameLayout>\n
+</LinearLayout>\n
+          ]]>
+    </string>
+    <string name="FragOneComm">
+public class FragmentOne extends Fragment implements View.OnClickListener {\n
+    int count = 0;\n
+    Communicator communicator;\n
+    Button btn;\n
+\n
+    @Override\n
+    public void onAttach(Context context) {\n
+        super.onAttach(context);\n
+        communicator = (Communicator) context;\n
+    }\n
+\n
+    @Nullable\n
+    @Override\n
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n
+        View view = inflater.inflate(R.layout.fragment_one_comm, container, false);\n
+        btn = view.findViewById(R.id.clickme);\n
+        btn.setOnClickListener(this);\n
+        return view;\n
+    }\n
+\n
+    @Override\n
+    public void onClick(View v) {\n
+        count++;\n
+        communicator.send(String.valueOf(count));\n
+  Timber.d(\"%s\",\"OnCreateViewCalled\");\n
+    }\n
+ @Override\n
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {\n
+        super.onActivityCreated(savedInstanceState);\n
+        if(savedInstanceState!=null){\n
+            count++;\n
+            communicator.send(String.valueOf(count));\n
+        }\n
+      \n
+    }\n
+}\n
+\n
+    </string>
+    <string name="FragTwoComm">
+public class FragmentTwo extends Fragment {\n
+  \n
+    TextView textView;\n
+    @Nullable\n
+    @Override\n
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n
+        View view = inflater.inflate(R.layout.fragment_two_comm, container, false);\n
+        textView=view.findViewById(R.id.textview);\n
+        return view;\n
+    }\n
+    public void setData(String data){\n
+        Integer val=Integer.parseInt(data);\n
+        textView.setText(getResources().getString(R.string.count, val));\n
+\n
+    }\n
+\n
+}\n
+\n
+    </string>
+    <string name="fragxmlonecomm">
+          <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:orientation=\"vertical\" android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\">\n
+    <Button\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_gravity=\"center\"\n
+        android:gravity=\"center\"\n
+        android:text=\"click to increment\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:id=\"@+id/clickme\"\n
+        android:layout_height=\"wrap_content\" />\n
+</LinearLayout>\n
+]]>
+    </string>
+    <string name="fragxmltwocomm">
+          <![CDATA[
+          <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:orientation=\"vertical\" android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\">\n
+    <TextView\n
+        android:layout_width=\"match_parent\"\n
+        android:id=\"@+id/textview\"\n
+        android:textSize=\"20sp\"\n
+        android:layout_margin=\"20dp\"\n
+        android:padding=\"20dp\"\n
+        android:textColor=\"@color/textColor\"\n
+        android:textStyle=\"bold\"\n
+        android:layout_height=\"wrap_content\" />\n
+</LinearLayout>\n
+          ]]>
+    </string>
+    <string name="CommunicatorInterface">
+public interface Communicator {\n
+    void send(String message);\n
+}\n
+    </string>
+</resources>

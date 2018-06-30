@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="BottomNavContents">
+        <item>MainActivity.java</item>
+        <item>FragmentOne.java</item>
+        <item>FragmentTwo.java</item>
+        <item>FragmentThree.java</item>
+        <item>activity_main.xml</item>
+        <item>fragment_one.xml</item>
+        <item>fragment_two.xml</item>
+        <item>fragment_three.xml</item>
+        <item>menu_bottom_navigation.xml</item>
+    </string-array>
+    <string name="MainActivityBottom">
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{\n
+    FragmentManager fragmentManager;\n
+    BottomNavigationView bottomNavigationView;\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        bottomNavigationView=findViewById(R.id.bottomview);\n
+        fragmentManager=getSupportFragmentManager();\n
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);\n
+        loadFirstFragment();\n
+    }\n
+    private void loadFirstFragment() {\n
+        Handler handler = new Handler();\n
+        handler.post(() -> {\n
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();\n
+            fragmentTransaction.add(R.id.frame, new FirstFragmentViewPager());\n
+            fragmentTransaction.commit();\n
+        });\n
+\n
+    }\n
+\n
+    @Override\n
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {\n
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();\n
+\n
+        switch (item.getItemId()){\n
+            case R.id.category:\n
+                fragmentTransaction.replace(R.id.frame, new FirstFragment()).commit();\n
+                break;\n
+            case R.id.example:\n
+                fragmentTransaction.replace(R.id.frame, new SecondFragment(), Constants.EXAMPLE_FRAG_TAG).commit();\n
+                break;\n
+            case R.id.settings:\n
+                fragmentTransaction.replace(R.id.frame, new ThirdFragment(), Constants.EXAMPLE_FRAG_TAG).commit();\n
+                break;\n
+\n
+        }\n
+        return true;\n
+    }\n
+}\n
+\n
+    </string>
+
+    <string name="activity_mainBottom">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    xmlns:tools=\"http://schemas.android.com/tools\">\n
+\n
+    <RelativeLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:background=\"@color/lightbackground\"\n
+        android:layout_height=\"match_parent\"\n
+        tools:context=\".activity.MainActivity\">\n
+        <View\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"2dp\"\n
+            android:layout_above=\"@id/bottomview\"\n
+            android:background=\"@color/colorPrimary\" />\n
+\n
+        <FrameLayout\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:id=\"@+id/frame\"\n
+            android:layout_above=\"@id/bottomview\"\n
+            android:layout_below=\"@id/mytoolbar\" />\n
+\n
+        <android.support.design.widget.BottomNavigationView\n
+            android:id=\"@+id/bottomview\"\n
+            android:background=\"@drawable/back3\"\n
+            app:itemIconTint=\"@color/textColor\"\n
+            app:itemTextColor=\"@color/textColor\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"56dp\"\n
+            android:layout_alignParentBottom=\"true\"\n
+            app:menu=\"@menu/bottom_navigation\" />\n
+    </RelativeLayout>\n
+</layout>\n
+]]>
+    </string>
+    <string name="menu_bottom_navigationBottom">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<menu xmlns:android=\"http://schemas.android.com/apk/res/android\">\n
+    <item\n
+        android:checkable=\"true\"\n
+        android:id=\"@+id/category\"\n
+        android:icon=\"@drawable/category\"\n
+        android:title=\"@string/categories\" />\n
+    <item\n
+        android:checkable=\"true\"\n
+        android:id=\"@+id/example\"\n
+        android:icon=\"@drawable/examples\"\n
+        android:title=\"@string/examples\" />\n
+    <item\n
+        android:id=\"@+id/settings\"\n
+        android:checkable=\"true\"\n
+        android:icon=\"@drawable/ic_settings_white_36dp\"\n
+        android:title=\"@string/settings\" />\n
+\n
+</menu>\n
+         ]]>
+
+    </string>
+</resources>

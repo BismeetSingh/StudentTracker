@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="MenuItems">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>menu_main.xml</item>
+        <item>toolbar.xml</item>
+    </string-array>
+    <string name="MainActivityMenu">
+        public class MenuActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_menu);\n
+        Toolbar toolbar=findViewById(R.id.toolbar);\n
+        toolbar.inflateMenu(R.menu.menu_main);\n
+        toolbar.setTitle(\"Menu\");\n
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {\n
+            @Override\n
+            public boolean onMenuItemClick(MenuItem item) {\n
+                String data= String.valueOf(item.getTitle());\n
+                Toast.makeText(MenuActivity.this,\"You clicked: \"+ data, Toast.LENGTH_SHORT).show();\n
+                return true;\n
+            }\n
+        });\n
+\n
+        Button button=findViewById(R.id.clickbtnmenu);\n
+        registerForContextMenu(button);\n
+\n
+    }\n
+\n
+    @Override\n
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {\n
+        MenuInflater menuInflater=getMenuInflater();\n
+        menuInflater.inflate(R.menu.menu_main,menu);\n
+    }\n
+\n
+    @Override\n
+    public boolean onContextItemSelected(MenuItem item) {\n
+        String toast=item.getTitle().toString();\n
+        Toast.makeText(this,\"You clicked: \"+ toast, Toast.LENGTH_SHORT).show();\n
+        return true;\n
+    }\n
+\n
+    @Override\n
+    public boolean onCreateOptionsMenu(Menu menu) {\n
+        return true;\n
+    }\n
+}\n
+\n
+
+    </string>
+    <string name="XmlActivityMenu">
+
+        <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n\n
+    android:layout_width=\"match_parent\"\n\n
+    android:layout_height=\"match_parent\"\n\n
+    android:orientation=\"vertical\">\n\n
+\n\n
+    <include\n\n
+        android:id=\"@+id/toolbar\"\n\n
+        layout=\"@layout/toolbar\" />\n\n
+\n\n
+    <Button\n\n
+        android:id=\"@+id/clickbtnmenu\"\n\n
+        android:layout_width=\"wrap_content\"\n\n
+        android:layout_height=\"wrap_content\"\n\n
+        android:layout_gravity=\"center\"\n\n
+        android:layout_marginTop=\"20dp\"\n\n
+        android:text=\"Long press Me\"\n\n
+        android:textColor=\"@color/colorPrimary\"\n\n
+        android:textSize=\"20sp\" />\n\n
+</LinearLayout>\n\n
+        ]]>
+
+    </string>
+    <string name="MenuXMlMenu">
+<![CDATA[
+<menu xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    xmlns:tools=\"http://schemas.android.com/tools\"\n
+    tools:context=\"com.app.bissudroid.androidtutorials.activity.MainActivity\">\n
+    <item\n
+        android:id=\"@+id/action_settings\"\n
+        android:orderInCategory=\"100\"\n
+        android:title=\"@string/action_settings\"\n
+        android:icon=\"@drawable/ic_settings_white_36dp\"\n
+        app:showAsAction=\"never\" />\n
+    <item\n
+        android:title=\"Contact Us\"\n
+        android:icon=\"@drawable/contact\"\n
+        android:id=\"@+id/contactthedeveloper\"\n
+        app:showAsAction=\"never\"/>\n
+    <item\n
+        android:title=\"Share\"\n
+        android:id=\"@+id/share\"\n
+        android:icon=\"@drawable/ic_share_white_36dp\"\n
+        app:showAsAction=\"never\"/>\n
+</menu>\n
+\n
+]]>
+
+    </string>
+    <string name="toolbarMenu">
+        <![CDATA[
+
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<layout\n
+    xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\">\n
+\n
+\n
+<android.support.v7.widget.Toolbar\n
+    android:id=\"@+id/toolbar\"\n
+    app:popupTheme=\"@style/ThemeOverlay.AppCompat.ActionBar\"\n
+    android:layout_width=\"match_parent\"\n
+    app:titleTextColor=\"@color/textColor\"\n
+    android:layout_height=\"?attr/actionBarSize\"\n
+    android:background=\"?attr/colorPrimary\" />\n
+</layout>\n
+]]>
+    </string>
+
+</resources>

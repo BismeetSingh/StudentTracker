@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:checkable="true"
+        android:id="@+id/category"
+        android:icon="@drawable/category"
+        android:title="@string/categories" />
+    <item
+        android:checkable="true"
+        android:id="@+id/example"
+        android:icon="@drawable/examples"
+        android:title="@string/examples" />
+    <item
+        android:id="@+id/aboutus"
+        android:checkable="true"
+        android:icon="@drawable/information"
+        android:title="@string/aboutus" />
+
+</menu>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.bissudroid.androidtutorials">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".di.AndroidApplication"
+        android:theme="@style/BaseTheme">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/BaseTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".outputs.Activity_Main_Activity" />
+        <activity android:name=".outputs.LifeCycle" />
+        <activity android:name=".outputs.FirstActivity" />
+        <activity android:name=".outputs.SecondActivity" />
+        <activity android:name=".activity.CodeActivity" />
+        <activity android:name=".outputs.fragments.FragmentFirstActivity" />
+        <activity android:name=".outputs.fragments.FragmentSecondActivity" />
+        <activity android:name=".outputs.fragments.ThirdFragmentActivity" />
+        <activity android:name=".outputs.widgets.TextViewImplementation" />
+        <activity android:name=".outputs.widgets.EditTextImplementation" />
+        <activity android:name=".outputs.widgets.ImageViewImplementation" />
+        <activity android:name=".outputs.widgets.ButtonsImplementation" />
+        <activity android:name=".outputs.widgets.SwitchesImplementation" />
+        <activity android:name=".outputs.widgets.ToggleButtonsImplementation" />
+        <activity android:name=".outputs.widgets.RadioButtonImplementation" />
+        <activity android:name=".outputs.widgets.CheckBoxImplementation" />
+        <activity android:name=".outputs.widgets.ProgressDialogImplementation" />
+        <activity android:name=".outputs.widgets.WebViewImplementation" />
+        <activity android:name=".outputs.widgets.SpinnerImplementation" />
+        <activity android:name=".outputs.animations.MoveActivity"/>
+        <activity android:name=".outputs.materialdesign.ToolbarActivity" />
+        <activity android:name=".outputs.materialdesign.CollapsingToolbarActivity" />
+        <activity android:name=".outputs.materialdesign.FabActivity" />
+        <activity android:name=".outputs.materialdesign.NavDrawerActivity" />
+        <activity android:name=".outputs.examples.CustomToastActivity" />
+        <activity android:name=".outputs.examples.CustomDialogActivity" />
+        <activity android:name=".outputs.examples.DatePickerActivity" />
+        <activity android:name=".outputs.examples.TimeActivity" />
+        <activity android:name=".outputs.adapter.RecyclerViewActivity" />
+        <activity android:name=".outputs.adapter.DifferenceViewsActivity" />
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".outputs.widgets.SeekbarActivity" />
+        <activity android:name=".outputs.notifications.NotificationActivity" />
+        <activity android:name=".outputs.sheets.SheetsActivity" />
+        <activity android:name=".outputs.materialdesign.BottomNavActivity" />
+        <activity android:name=".outputs.materialdesign.TextInputLayoutActivity" />
+        <activity android:name=".outputs.fragment_communication.CommunicationActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".outputs.MenuActivity" />
+        <activity android:name=".outputs.sharedpreferences.LoginActivity" />
+        <activity android:name=".outputs.sharedpreferences.RegistrationActivity" />
+        <activity android:name=".outputs.viewpager.ViewPagerActivity" />
+        <activity android:name=".outputs.architecture_components.ViewModelActivity" />
+        <activity android:name=".outputs.materialdesign.SharedElementSourceActivity" />
+        <activity android:name=".outputs.materialdesign.SharedElementDestinationActivity" />
+
+
+    </application>
+
+</manifest>

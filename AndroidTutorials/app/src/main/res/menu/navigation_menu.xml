@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- The menu items below will appear as a list -->
+    <item
+        android:id="@+id/item_facebook"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Add"/>
+
+    <item
+        android:id="@+id/item_instagram"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"/>
+
+    <item
+        android:id="@+id/item_linkedin"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Delete"/>
+
+    <item
+        android:id="@+id/item_pinterest"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Camera"/>
+
+
+
+</menu>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string name="firstfragmentlayout">
+        <![CDATA[
+        <?xml version=\"1.\0" encoding=\"utf-8\"?>
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            android:layout_width=\"match_parent\"
+        android:layout_height=\"match_parent\"
+            android:orientation=\"vertical\">
+
+    <FrameLayout
+        android:id=\"@+id/frame\"
+        android:layout_width=\"match_parent\"
+        android:layout_height=\"match_parent\">
+        </FrameLayout>
+
+</LinearLayout>
+]]>
+    </string>
+    <string name="FragmentOne">
+        public class FragmentOne extends Fragment {\n
+    @Nullable\n
+    @Override\n
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n
+        View view=inflater.inflate(R.layout.fragment_one,container,false);\n
+        return view;\n
+
+    }\n
+}
+
+    </string>
+    <string name="fragmentone.xml">
+         <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n\n
+<TextView\n
+    android:layout_width=\"match_parent\"\n
+    android:text=\"First Fragment\"\n
+    android:textStyle=\"bold\"\n
+    android:textSize=\"20sp\"\n
+    android:gravity=\"center\"\n
+    android:layout_height=\"match_parent\" />\n
+</LinearLayout>
+]]>
+    </string>
+    <string name="SecondFragmentJava">
+        public class FragmentOne extends Fragment {\n\n
+    @Nullable\n
+    @Override\n
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n
+        View view=inflater.inflate(R.layout.fragment_one,container,false);\n
+        Toast.makeText(getActivity(), "On Create view Called", Toast.LENGTH_SHORT).show();\n
+        return view;\n
+    }\n
+
+    @Override\n
+    public void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        Toast.makeText(getActivity(), "On Create  Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {\n
+        super.onActivityCreated(savedInstanceState);\n
+        Toast.makeText(getActivity(), "On Activity created Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override
+    public void onPause() {\n
+        super.onPause();\n
+        Toast.makeText(getActivity(), "On Pause Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override
+    public void onDestroy() {\n
+        super.onDestroy()SecondFragment;\n
+        Toast.makeText(getActivity(), "On Destroy Called", Toast.LENGTH_SHORT).show();\n
+    }
+
+    @Override\n
+    public void onAttach(Context context) {\n
+        super.onAttach(context);\n
+        Toast.makeText(getActivity(), "On Attach Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    public void onDetach() {\n
+        super.onDetach();\n
+        Toast.makeText(getActivity(), "On Detach Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    public void onResume() {\n
+        super.onResume();\n
+        Toast.makeText(getActivity(), "On Resume Called", Toast.LENGTH_SHORT).show();\n
+    }
+
+    @Override\n
+    public void onStart() {\n
+        super.onStart();\n
+        Toast.makeText(getActivity(), "On Start Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    public void onStop() {\n
+        super.onStop();\n
+        Toast.makeText(getActivity(), "On Stop Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    public void onDestroyView() {\n
+        super.onDestroyView();\n
+        Toast.makeText(getActivity(), "On Destroy view Called", Toast.LENGTH_SHORT).show();\n
+    }\n
+}\n
+
+    </string>
+    <string name="FragmentsViaXmlActivity">
+         <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+        <LinearLayout xmlns:android=\n"http://schemas.android.com/apk/res/android"\n
+            xmlns:tools=\"http://schemas.android.com/tools\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:weightSum=\"1\"\n
+            android:orientation=\"vertical\">\n\n
+<fragment\n
+    android:layout_width=\n"match_parent"\n
+    android:id=\"@+id/fragmentone\"\n
+    android:layout_weight=\"0.5\"\n
+    android:name=\"com.yourpackage.FirstFragment\"\n
+    android:layout_height=\"match_parent\"\n
+    tools:layout=\"@layout/fragment_one\" />\n\n
+    <View\n
+        android:layout_width=\"match_parent\"\n
+        android:background=\"@color/colorPrimary\"\n
+        android:layout_height=\"2dp\"/>\n\n
+    <fragment\n
+        android:layout_width=\"match_parent\"\n
+        android:id=\"@+id/fragmenttwo\"\n
+        tools:layout=\"@layout/fragment_two\"\n
+        android:layout_weight=\"0.5\"\n
+        android:name=\"com.yourpackage.FirstFragment\"\n
+        android:layout_height=\"match_parent\"/>\n
+</LinearLayout>\n
+]]>
+
+
+    </string>
+    <string name="FragmentsViaXmlFirstFragment">
+      <![CDATA[
+    <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+    <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\"\n
+        android:orientation=\"vertical\">\n\n
+<TextView\n
+    android:layout_width=\"match_parent\" \n
+    android:text=\"First Fragment\"\n
+    android:textStyle=\"bold\"\n
+    android:textSize=\"20sp\"\n
+    android:gravity=\"center\"\n
+    android:layout_height=\"match_parent\" />\n
+</LinearLayout>]]>\n
+
+</string>
+    <string name="FragmentsViaXmlSecondFragment">
+           <![CDATA[
+    <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+    <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\"\n
+        android:orientation=\"vertical\">\n\n
+<TextView\n
+    android:layout_width=\"match_parent\" \n
+    android:text=\"Second Fragment\"\n
+    android:textStyle=\"bold\"\n
+    android:textSize=\"20sp\"\n
+    android:gravity=\"center\"\n
+    android:layout_height=\"match_parent\" />\n
+</LinearLayout>]]>\n
+
+
+    </string>
+    <string name="FragmentsViaXmlFirstFragmentJava">
+            public class FragmentOne extends Fragment {\n
+    @Nullable\n
+    @Override\n
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n
+        View view=inflater.inflate(R.layout.fragment_one,container,false);\n
+        return view;\n
+
+    }\n
+}
+
+
+</string>
+    <string name="FragmentsViaXmlSecondFragmentJava">
+            public class FragmentOne extends Fragment {\n
+    @Nullable\n
+    @Override\n
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n
+        View view=inflater.inflate(R.layout.fragment_two,container,false);\n
+        return view;\n
+
+    }\n
+}
+
+</string>
+    <string name="fragTrans">
+        public class MainActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.fragment_first);\n
+        FragmentManager fragmentManager=getSupportFragmentManager();\n
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();\n
+        fragmentTransaction.replace(R.id.frame,new FragmentOne()).commit();\n
+
+    }\n
+}
+
+    </string>
+
+</resources>

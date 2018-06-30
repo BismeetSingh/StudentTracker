@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.app.bissudroid.androidtutorials.activity.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_settings_white_36dp"
+        app:showAsAction="never" />
+    <item
+        android:title="Contact Us"
+        android:icon="@drawable/contact"
+        android:id="@+id/contactthedeveloper"
+        app:showAsAction="never"/>
+    <item
+        android:title="Share"
+        android:id="@+id/share"
+        android:icon="@drawable/ic_share_white_36dp"
+        app:showAsAction="never"/>
+</menu>

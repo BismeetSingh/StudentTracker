@@ -1,0 +1,330 @@
+<resources>
+    <string-array name="entries">
+        <item>Mango</item>
+        <item>Apple</item>
+        <item>Orange</item>
+        <item>Pear</item>
+        <item>Strawberry</item>
+
+    </string-array>
+    <string name="app_name">AndroidTutorials</string>
+    <string name="action_settings">Settings</string>
+    <string name="categories">Categories</string>
+    <string name="examples">Examples</string>
+    <string name="quiz">Quiz</string>
+    <string name="android_basics">Android Basics</string>
+    <string-array name="introduction">
+        <item>History</item>
+        <item>Beneath Android</item>
+        <item>The Linux Kernel</item>
+        <item>Dalvik Virtual Machine</item>
+    </string-array>
+    <string-array name="activities">
+
+        <item>A simple Activity</item>
+        <item>Activity Life cycle</item>
+        <item>Intent Between Activities</item>
+    </string-array>
+
+    <string-array name="fragments">
+
+
+        <item>Fragment Transactions</item>
+        <item>Fragment Lifecycle</item>
+        <item>Loading Fragments Via XML</item>
+    </string-array>
+
+    <string-array name="widgets">
+
+        <item>TextViews</item>
+        <item>EditText</item>
+        <item>Buttons</item>
+        <item>ImageViews</item>
+        <item>Switches</item>
+        <item>Toggles</item>
+        <item>Spinner</item>
+        <item>SeekBar</item>
+        <item>RadioButton</item>
+        <item>CheckBox</item>
+        <item>Progress Dialog</item>
+        <item>WebView</item>
+        <item>DatePicker</item>
+        <item>TimePicker</item>
+    </string-array>
+    <string-array name="animations">
+
+        <item>Move</item>
+        <item>Slide</item>
+        <item>Rotate</item>
+        <item>Fade In</item>
+        <item>Fade Out</item>
+        <item>Scale</item>
+        <item>Blink</item>
+    </string-array>
+
+    <string-array name="materialdesign">
+
+
+        <item>Toolbar</item>
+        <item>Collapsing Toolbar</item>
+        <item>Navigation Drawer</item>
+        <item>Floating Action Button</item>
+        <item>Bottom Navigation View</item>
+        <item>TextInputLayout</item>
+        <item>Shared Element Transitions</item>
+
+
+    </string-array>
+    <string-array name="adapters">
+
+        <item>Spinner</item>
+        <item>Custom Adapter</item>
+        <item>RecyclerViewAdapter</item>
+    </string-array>
+    <string-array name="architecture_components">
+
+        <item>ViewModels</item>
+        <item>Room</item>
+        <item>LiveData</item>
+    </string-array>
+    <string name="history">
+        In October 2003, well before the term “smartphone” was used by most of the public, and several years before Apple announced its first iPhone and its iOS, the company Android Inc was founded in Palo Alto, California. Its four founders were Rich Miner, Nick Sears, Chris White, and Andy Rubin. At the time of its public founding, Rubin was quoted as saying that Android Inc was going to develop “smarter mobile devices that are more aware of its owner’s location and preferences.”
+        In 2005, the next big chapter in Android’s history was made when the original company was acquired by Google. Rubin and other founding members stayed on to continue to develop the OS under their new owners. The decision was made to use Linux as the basis for the Android OS, and that also meant that Android itself could be offered to third-party mobile phone manufacturers for free. Google and the Android team felt the company could make money offering other services that used the OS, including apps.
+        Rubin stayed at Google as head of the Android team until 2013, when Google announced he would be leaving that division. In late 2014, Rubin left Google altogether and launched a startup business incubator. Earlier in 2017, Rubin officially revealed his return to the smartphone industry with his company’s announcement of the Android-based Essential Phone.</string>
+    <string name="architectureinfo">
+    Android is architected in the form of a software stack comprising applications, an operating system, run-time environment, middleware, services and libraries. This architecture can, perhaps, best be represented visually as outlined in Figure 6-1. Each layer of the stack, and the corresponding elements within each layer, are tightly integrated and carefully tuned to provide the optimal application development and execution environment for mobile devices.
+</string>
+    <string name="dalvik">
+        As previously noted, the Linux kernel provides a multitasking execution environment allowing multiple processes to execute concurrently. It would be easy to assume, therefore, that each Android application simply runs as a process directly on the Linux kernel. In fact, each application running on an Android device does so within its own instance of the Dalvik virtual machine (VM).
+
+Running applications in virtual machines provides a number of advantages. Firstly, applications are essentially sandboxed, in that they cannot detrimentally interfere (intentionally or otherwise) with the operating system or other applications, nor can they directly access the device hardware. Secondly, this enforced level of abstraction makes applications platform neutral in that they are never tied to any specific hardware.
+
+The Dalvik virtual machine was developed by Google and relies on the underlying Linux kernel for low-level functionality. It is more efficient than the standard Java VM in terms of memory usage, and specifically designed to allow multiple instances to run efficiently within the resource constraints of a mobile device.
+
+In order to execute within a Dalvik VM, application code must be transformed from standard Java class files to the Dalvik executable (.dex) format, which has a 50% smaller memory footprint than standard Java bytecode. Standard Java class files can usually (though not always) be converted to Dex format using the dx tool included with the Android SDK.
+    </string>
+    <string name="linuxkernel">Positioned at the bottom of the Android software stack, the Linux Kernel provides a level of abstraction between the device
+        hardware and the upper layers of the Android software stack. Based on Linux version 2.6, the kernel provides preemptive multitasking, low-level core system services such as memory, process and power management in addition to providing a network stack and device drivers for hardware such as the device display, Wi-Fi and audio.
+
+The original Linux kernel was developed in 1991 by Linus Torvalds and was combined with a set of tools, utilities and compilers developed by Richard Stallman at the Free Software Foundation to create a full operating system referred to as GNU/Linux. Various Linux distributions have been derived from these basic underpinnings such as Ubuntu and Red Hat Enterprise Linux.
+
+It is important to note, however, that Android only uses the Linux kernel. That said, it is worth noting that the Linux kernel was originally developed for use in traditional computers in the form of desktops and servers. In fact, Linux is now most widely deployed in mission critical enterprise server environments. It is a testament to both the power of today’s mobile devices and the efficiency and performance of the Linux kernel that we find this software at the heart of the Android software stack. </string>
+    <string-array name="file_activity_names">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+    </string-array>
+    <string-array name="SpinnerNames">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>strings.xml</item>
+    </string-array>
+    <string-array name="intents">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>SecondActivity.java</item>
+        <item>secondactivity.xml</item>
+    </string-array>
+    <string-array name="fragment_contents">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>FragmentOne.java</item>
+        <item>fragmentone.xml</item>
+
+    </string-array>
+    <string-array name="fragmentxmlitems">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>fragment_one.xml</item>
+        <item>fragment_two.xml</item>
+        <item>FragmentOne.java</item>
+        <item>FragmentTwo.java</item>
+    </string-array>
+    <string-array name="animation_items">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>animation.xml</item>
+    </string-array>
+    <string-array name="materialdesigncontents">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+    </string-array>
+
+    <string-array name="adapter_contents">
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>Users.java</item>
+        <item>CustomAdapter.java</item>
+        <item>list_items.xml</item>
+    </string-array>
+    <string name="MainActivityJavaFirst">
+        public class Main_Activity extends AppCompatActivity {\n\n
+    @Override\n\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+    }\n
+}
+    </string>
+    <string name="MainActivityXMLfirst">
+<![CDATA[
+<?xml version="1.0" encoding="utf-8"?>\n
+        <LinearLayout \n xmlns:android="http://schemas.android.com/apk/res/android"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n\n
+<TextView\n
+    android:layout_width=\"match_parent\"\n
+    android:text=\"Hello world!\"\n
+    android:gravity=\"center\"\n
+    android:textSize=\"20sp\"\n
+    android:layout_height=\"match_parent\" />\n
+
+</LinearLayout>
+]]>
+
+    </string>
+    <string name="MainActivityLifeCycleJava">
+        public class MainActivity  extends AppCompatActivity{\n\n
+    private Context context;\n
+
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        context=getApplicationContext();\n
+        Toast.makeText(context, "I am created", Toast.LENGTH_SHORT).show();\n
+
+
+    }
+\n
+    @Override
+    protected void onStop() {\n
+        super.onStop();\n
+        Toast.makeText(context, "I am stopped", Toast.LENGTH_SHORT).show();v
+    }
+\n
+    @Override\n
+    protected void onStart() {\n
+        super.onStart();\n
+        Toast.makeText(context, "I am started", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    protected void onResume() {\n
+        super.onResume();\n
+        Toast.makeText(context, "I am resumed", Toast.LENGTH_SHORT).show();\n
+        Toast.makeText(context, "Minimize the app after this method is called", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    protected void onRestart() {\n
+        super.onRestart();\n
+        Toast.makeText(context, "I am restarted", Toast.LENGTH_SHORT).show();\n
+    }
+\n
+    @Override\n
+    protected void onPause() {\n
+        super.onPause();\n
+        Toast.makeText(context, "I am paused", Toast.LENGTH_SHORT).show();\n
+    }\n
+
+    @Override\n
+    protected void onDestroy() {\n
+        super.onDestroy();\n
+        Toast.makeText(context, "I am destroyed", Toast.LENGTH_SHORT).show();\n
+    }\n
+}\n
+
+    </string>
+    <string name="MainActivityIntentFirstJava">\n
+        public class FirstActivity extends AppCompatActivity {\n\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.first_actvity);\n
+        Button button=findViewById(R.id.clickme);\n
+        button.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                Intent intent=new Intent(FirstActivity.this,SecondActivity.class);\n
+                startActivity(intent);\n
+            }\n
+        });\n
+    }\n
+}\n
+    </string>
+    <string name="SecondActivityIntent">
+        public class SecondActivity extends AppCompatActivity {\n\n
+
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.second_activity);\n
+    }\n
+}
+    </string>
+    <string name="firstintentxml">
+<![CDATA[
+<?xml version="1.0" encoding="utf-8"?>\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n\n
+ <TextView\n
+     android:layout_width=\"match_parent\"\n
+     android:text=\"First Activity!\"\n
+     android:gravity=\"center\"\n
+     android:layout_centerInParent=\"true\"\n
+     android:textSize=\"20sp\"\n
+     android:id=\"@+id/txtview\"\n
+     android:layout_height=\"wrap_content\" />\n\n
+
+    <Button\n
+        android:id=\"@+id/clickme\"\n
+        android:layout_below=\"@id/txtview\"\n
+        android:layout_centerHorizontal=\"true\"\n
+        android:layout_marginTop=\"20dp\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:text=\"Click the button\" />\n
+</LinearLayout>\n
+]]>
+    </string>
+    <string name="secondactivity_xml">
+<![CDATA[
+<?xml version="1.0" encoding="utf-8"?>\n
+        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"match_parent\"\n
+            android:orientation=\"vertical\">\n\n
+<TextView\n
+    android:layout_width="match_parent"\n
+    android:text=\"Second Activity!\"\n
+    android:gravity=\"center\"\n
+    android:textSize=\"20sp\"\n
+    android:layout_height=\"match_parent\" />\n
+</LinearLayout>\n
+]]>
+    </string>
+          <string name="settings">Settings</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="text">Certain but she but shyness why cottage. Gay the put instrument sir entreaties affronting. Pretended exquisite see cordially the you. Weeks quiet do vexed or whose. Motionless if no to affronting imprudence no precaution. My indulged as disposal strongly attended. Parlors men express had private village man. Discovery moonlight recommend all one not. Indulged to answered prospect it bachelor is he bringing shutters. Pronounce forfeited mr direction oh he dashwoods ye unwilling.  Denote simple fat denied add worthy little use. As some he so high down am week. Conduct esteems by cottage to pasture we winding. On assistance he cultivated considered frequently. Person how having tended direct own day man. Saw sufficient indulgence one own you inquietude sympathize.  Paid was hill sir high. For him precaution any advantages dissimilar comparison few terminated projecting. Prevailed discovery immediate objection of ye at. Repair summer one winter living feebly pretty his. In so sense am known these since. Shortly respect ask cousins brought add tedious nay. Expect relied do we genius is. On as around spirit of hearts genius. Is raptures daughter branched laughter peculiar in settling.  Are own design entire former get should. Advantages boisterous day excellence boy. Out between our two waiting wishing. Pursuit he he garrets greater towards amiable so placing. Nothing off how norland delight. Abode shy shade she hours forth its use. Up whole of fancy ye quiet do. Justice fortune no to is if winding morning forming.  Led ask possible mistress relation elegance eat likewise debating. By message or am nothing amongst chiefly address. The its enable direct men depend highly. Ham windows sixteen who inquiry fortune demands. Is be upon sang fond must shew. Really boy law county she unable her sister. Feet you off its like like six. Among sex are leave law built now. In built table in an rapid blush. Merits behind on afraid or warmly.</string>
+    <string name="click_the_button">Click the button</string>
+    <string name="second_activity">Second Activity!</string>
+    <string name="welcome_to_android_tutorials">Welcome to Android Tutorials</string>
+    <string name="bigstyle_notification">BigStyle Notification</string>
+    <string name="inbox_style_notification">Inbox Style Notification</string>
+    <string name="normal_notification">Normal Notification</string>
+    <string name="order_details">Order Details</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="paneer_tikka_1x2">Paneer Tikka 1x2</string>
+    <string name="chicken_fried_rice_1x1">Chicken Fried Rice 1x1</string>
+    <string name="flat_no_404_skyline_apartments_vizag_500576">Flat No 404, Skyline Apartments, Vizag - 500576</string>
+    <string name="proceed_payment">PROCEED PAYMENT</string>
+    <string name="count">The count is %d</string>
+    <string name="aboutus">About Us</string>
+    <string name="if_you_like_our_app_please_consider_a_moment_to_rate_us">If you like our app,please consider a moment to rate us.</string>
+
+
+</resources>

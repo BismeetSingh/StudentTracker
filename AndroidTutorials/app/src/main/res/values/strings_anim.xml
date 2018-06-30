@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string name="ScaleJava">
+        public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        Button button = findViewById(R.id.btnanimation);\n
+        button.setOnClickListener(new View.OnClickListener() {\n
+            @Override\n
+            public void onClick(View v) {\n
+                Animation animation=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animation);\n
+                button.startAnimation(animation);\n
+
+            }\n
+        });\n
+    }
+}
+    </string>
+
+    <string name="MoveXML">
+    <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+        <set xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:fillAfter=\"true\" \n
+            android:interpolator=\"@android:anim/linear_interpolator\"> \n\n
+    <translate
+        android:fromYDelta=\"100%p\" \n
+        android:toYDelta=\"0%p\"\n
+        android:duration=\"2500\"/>\n
+
+</set>
+]]>
+    </string>
+
+    <string name="SlideXML">
+     <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+        <set xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+            android:fillAfter=\"true\">\n\n
+    <scale\n
+        android:duration=\"1600\"\n
+        android:fromYScale=\"1.0\"\n
+        android:fromXScale=\"1.0\"\n
+        android:toXScale=\"1.0\"\n
+        android:toYScale=\"0.0\"\n
+        android:repeatCount=\"infinite\"\n
+        android:repeatMode=\"reverse\"\n
+        android:interpolator=\"@android:anim/linear_interpolator\"/>\n
+</set>]]>
+
+    </string>
+    <string name="RotateXML">
+     <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+        <set xmlns:android=\"http://schemas.android.com/apk/res/android\"\n\n
+            android:fillAfter=\"true\">\n
+<rotate\n
+    android:fromDegrees=\"0\"\n
+    android:toDegrees=\"360\"\n
+    android:pivotY=\"50%\"\n
+    android:pivotX=\"50%\"\n
+    android:duration=\"1000\"\n
+    android:repeatCount=\"infinite\"\n
+    android:repeatMode=\"reverse\"/>\n
+</set>]]>
+
+    </string>
+    <string name="FadeINXML">
+        <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+        <set xmlns:android=\"http://schemas.android.com/apk/res/android\">\n
+<alpha\n
+    android:toAlpha=\"1\"\n
+    android:fromAlpha=\"0\"\n
+    android:duration=\"3000\"/>\n
+</set>\n
+]]>
+
+
+    </string>
+    <string name="FadeOutXML">
+          <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+        <set xmlns:android=\"http://schemas.android.com/apk/res/android\">\n
+<alpha\n
+    android:toAlpha=\"0\"\n
+    android:fromAlpha=\"1\"\n
+    android:duration=\"3000\"/>\n
+</set>\n
+]]>
+
+    </string>
+    <string name="BlinkXML">
+        <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?> \n\n
+        <set xmlns:android=\"http://schemas.android.com/apk/res/android\">\n
+<alpha\n
+    android:fromAlpha=\"0.0\"\n
+    android:toAlpha=\"1.0\"\n
+    android:duration=\"300\"\n
+    android:repeatMode=\"reverse\"\n
+    android:repeatCount=\"infinite\"/>\n
+
+</set>\n
+]]>
+
+    </string>
+    <string name="ScaleXML">
+          <![CDATA[
+        <?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+        <set xmlns:android=\"http://schemas.android.com/apk/res/android\">\n
+
+    <scale\n
+        android:duration=\"300\"\n
+        android:fromXScale=\"0\"\n
+        android:fromYScale=\"0\"\n
+        android:pivotX=\"50%\"\n
+        android:pivotY=\"50%\"\n
+        android:toXScale=\"1\"\n
+        android:toYScale=\"1\" />\n
+</set>\n
+]]>
+    </string>
+    <string name="Animxml">
+
+ <![CDATA[
+ <?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+    android:orientation=\"vertical\">\n
+\n
+
+
+    <Button\n
+        android:id=\"@+id/btnanimation\"\n
+        android:layout_width=\"wrap_content\"\n
+        android:layout_height=\"wrap_content\"\n
+        android:layout_gravity=\"center\"\n
+        android:layout_marginTop=\"50dp\"\n
+        android:text=\"Show Animation\" />\n
+</LinearLayout>\n
+ ]]>
+    </string>
+
+
+</resources>

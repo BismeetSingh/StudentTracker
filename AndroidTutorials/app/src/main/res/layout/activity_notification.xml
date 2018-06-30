@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/textColor"
+        android:id="@+id/normalnotification"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="@string/normal_notification" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="@color/textColor"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:id="@+id/inboxstyle"
+        android:layout_height="wrap_content"
+        android:text="@string/inbox_style_notification" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/textColor"
+        android:layout_width="wrap_content"
+        android:id="@+id/bigstyle"
+        android:layout_height="wrap_content"
+        android:text="@string/bigstyle_notification" />
+
+
+</LinearLayout>

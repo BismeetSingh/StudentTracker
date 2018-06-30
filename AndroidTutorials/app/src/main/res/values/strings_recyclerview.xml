@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="RecyclerViewcontents">
+        <item>Introduction</item>
+        <item>MainActivity.java</item>
+        <item>activity_main.xml</item>
+        <item>items.xml</item>
+        <item>RecylerViewAdapter.java</item>
+        <item>Users.java</item>
+    </string-array>
+    <string name="abtRecyclerView">
+        RecyclerView is a very powerful and flexible tool available to Android developers.\n\n Because of this, it’s crucial that we implement it properly so our code strikes a good balance between being as optimized and concise as possible.\n\n
+        Project Setup:\n\n
+
+We need to begin setting up our project by making sure that the RecyclerView dependency is included in our project libraries. In your app-level build.gradle file add the following dependencies:
+
+Hint: You can find the most recent up-to-date version at the official Android Support Library Features page.\n\n
+
+The basic dependencies should now look something like the following:\n
+
+dependencies {
+\n
+    compile "com.android.support:appcompat-v7:27.1.1"\n
+    compile "com.android.support:recyclerview-v7:27.1.1"\n\n
+
+}\n
+After this,we need to add to add the RecyclerView Widget to our activity layout.\n\n
+        Next,we need to create a layout file for the items to be shown in the recyclerview.\n\n
+        Now,we need to create a class that extends the RecyclerViewAdapter&lt;AdapterClass.CustomViewHolder;gt\n\n
+        Android Studio asks you to override three methods.\n\n
+        The three methods are:
+        OnCreateViewHolder(ViewGroup,int):\n\n
+        Called when viewholder is initialized.\n\n
+        OnBindViewHolder(ViewHolder holder,int position):\n\n
+        Called to set the data from the model class to the  recyclerview.\n
+        getCount():\n:\n
+        Returns the no of items in the list.\n::\n
+        The rest will be cleared from the given examples.
+    </string>
+    <string name="MainActRView">
+public class MainActivity extends AppCompatActivity {\n
+    @Override\n
+    protected void onCreate(@Nullable Bundle savedInstanceState) {\n
+        super.onCreate(savedInstanceState);\n
+        setContentView(R.layout.activity_main);\n
+        RecyclerView recyclerView=findViewById(R.id.rview);\n
+        List&lt;Users&gt; users=Users.getUsers();\n
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));\n
+        recyclerView.setItemAnimator(new DefaultItemAnimator());\n
+        CustomRecyclerViewAdapter customRecyclerViewAdapter=new CustomRecyclerViewAdapter(getApplicationContext());\n
+        recyclerView.setAdapter(customRecyclerViewAdapter);\n
+        customRecyclerViewAdapter.updateData(users);\n
+    }\n
+}\n
+\n
+    </string>
+    <string name="actxmlRView">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"match_parent\"\n
+\n
+    android:orientation=\"vertical\">\n
+\n
+    <android.support.v7.widget.RecyclerView\n
+        android:id=\"@+id/rview\"\n
+        android:layout_width=\"match_parent\"\n
+        android:layout_height=\"match_parent\" />\n
+</LinearLayout>\n
+    ]]>
+
+
+    </string>
+    <string name="Users">
+        public class Users {\n
+    private String name;\n
+    private String email;\n
+    private String phoneno;\n
+\n
+    public Users(String name, String email, String phoneno) {\n
+        this.name = name;\n
+        this.email = email;\n
+        this.phoneno = phoneno;\n
+    }\n
+\n
+    public String getName() {\n
+\n
+        return name;\n
+    }\n
+\n
+    public String getEmail() {\n
+        return email;\n
+    }\n
+\n
+    public String getPhoneno() {\n
+        return phoneno;\n
+    }\n
+\n
+    public static List&lt;Users&gt; getUsers(){\n
+        List&lt;Users&gt; users=new ArrayList&lt;&gt;();\n
+        for(int i=0;i&lt;100;i++){\n
+            String name=\"User\"+(i+1);\n
+            String email=\"user@xyz.com\"+(i+1);\n
+            String phone=\"123456789\";\n
+            Users user=new Users(name,email,phone);\n
+            users.add(user);\n
+\n
+        }\n
+        return users;\n
+    }\n
+}\n
+\n
+    </string>
+    <string name="itemsRView">
+         <![CDATA[
+<?xml version=\"1.0\" encoding=\"utf-8\"?>\n
+<android.support.v7.widget.CardView xmlns:android=\"http://schemas.android.com/apk/res/android\"\n
+    android:layout_width=\"match_parent\"\n
+    android:layout_height=\"wrap_content\"\n
+    xmlns:tools=\"http://schemas.android.com/tools\"\n
+    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n
+    app:cardCornerRadius=\"5dp\"\n
+    android:layout_marginTop=\"10dp\"\n
+    android:padding=\"20dp\"\n
+    android:orientation=\"vertical\">\n
+    <LinearLayout\n
+        android:layout_width=\"match_parent\"\n
+        android:weightSum=\"1\"\n
+        android:layout_margin=\"10dp\"\n
+        android:orientation=\"vertical\"\n
+        android:layout_height=\"wrap_content\">\n
+        <TextView\n
+            android:layout_weight=\"0.3\"\n
+            android:textSize=\"20sp\"\n
+            tools:text=\"Bismeet\"\n
+            android:id=\"@+id/rname\"\n
+            android:layout_margin=\"10dp\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"0dp\" />\n
+        <TextView\n
+            android:layout_weight=\"0.3\"\n
+            android:textSize=\"20sp\"\n
+            tools:text=\"9892308331\"\n
+            android:id=\"@+id/rphone\"\n
+            android:layout_margin=\"10dp\"\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_height=\"0dp\" />\n
+        <TextView\n
+            android:layout_width=\"match_parent\"\n
+            android:layout_weight=\"0.4\"\n
+            android:textSize=\"20sp\"\n
+            android:id=\"@+id/remail\"\n
+            android:layout_margin=\"10dp\"\n
+            tools:text=\"bismeetsingh352@gmail.com\"\n
+            android:layout_height=\"0dp\" />\n
+    </LinearLayout>\n
+\n
+</android.support.v7.widget.CardView>\n
+         ]]>
+    </string>
+    <string name="Radapter">
+public class CustomRecyclerViewAdapter extends RecyclerView.Adapter&lt;CustomRecyclerViewAdapter.CustomHolder&gt; {\n\n
+    private List&lt;Users&gt; usersList;\n\n
+    private LayoutInflater layoutInflater;\n\n
+\n\n
+    public CustomRecyclerViewAdapter(Context context) {\n\n
+        layoutInflater=LayoutInflater.from(context);\n\n
+        usersList=new ArrayList&lt;&gt;();\n\n
+    }\n\n
+\n\n
+    @NonNull\n\n
+    @Override\n\n
+    public CustomHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n\n
+        View view=layoutInflater.inflate(R.layout.items,parent,false);\n\n
+        return new CustomHolder(view);\n\n
+    }\n\n
+\n\n
+    @Override\n\n
+    public void onBindViewHolder(@NonNull CustomHolder holder, int position) {\n\n
+        Users users=usersList.get(position);\n\n
+        holder.email.setText(users.getEmail());\n\n
+        holder.phone.setText(users.getPhoneno());\n\n
+        holder.name.setText(users.getName());\n\n
+\n\n
+    }\n\n
+    public void updateData(List&lt;Users&gt; users){\n\n
+        usersList=users;\n\n
+        notifyDataSetChanged();\n\n
+    }\n\n
+\n\n
+    @Override\n\n
+    public int getItemCount() {\n\n
+        return usersList==null?0:usersList.size();\n\n
+    }\n\n
+\n\n
+    class CustomHolder extends RecyclerView.ViewHolder {\n\n
+        TextView name,phone,email;\n\n
+        CustomHolder(View itemView) {\n\n
+            super(itemView);\n\n
+            name=itemView.findViewById(R.id.rname);\n\n
+            phone=itemView.findViewById(R.id.rphone);\n\n
+            email=itemView.findViewById(R.id.remail);\n\n
+        }\n\n
+    }\n\n
+}\n\n
+\n\n
+    </string>
+</resources>
